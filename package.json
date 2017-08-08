@@ -76,6 +76,16 @@
     ]
   },
   "keywords": [
-    "🐰"
+    "git",
+    "git-hooks",
+    "hooks",
+    "pre-commit",
+    "npm",
+    "yarn",
+    "developer-experience",
+    "workflow",
+    "commit",
+    "cli",
+    "cli-app"
   ]
 }
