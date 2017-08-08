@@ -12,11 +12,25 @@
 [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square)](./other/code_of_conduct.md)
 [![Roadmap](https://img.shields.io/badge/%F0%9F%93%94-roadmap-CD9523.svg?style=flat-square)](./other/roadmap.md)
 
-## Highlights
+## Why?
 
-// TODO
+- [Lockfiles are for apps, not for libraries/packages](https://github.com/sindresorhus/ama/issues/479#issuecomment-310661514)
+- [Listing lockfiles in `.gitignore` is considered a bad approach](https://github.com/facebookincubator/create-react-app/pull/2014#issuecomment-300811661)
+- Not only unstage, but also remove any lockfiles
+- *[Unstaging only](https://github.com/facebookincubator/create-react-app/pull/2700)* will introduce new problems
+- No need to worry whether contributors are using `npm` or `yarn`
+- No need to specify `package-lock=false` in `.npmrc`. How about in `.yarnrc`?
+- A cross-platform solution. Works on macOS, Linux, and Windows
 
 ## Installation
+
+Install [husky](https://github.com/typicode/husky) to make utilizing `git-hooks` easier:
+
+```sh
+npm install husky --save-dev
+```
+
+Then, install this package:
 
 ```sh 
 npm install remove-lockfiles --save-dev 
@@ -24,23 +38,25 @@ npm install remove-lockfiles --save-dev
 
 ## Usage
 
+We need to run `remove-lockfiles` before committing. To do that, edit your `package.json` to include this configuration:
+
 ```js
-// TODO
+{
+  "scripts": {
+    "precommit": "remove-lockfiles"
+  }
+}
 ```
 
-## FAQ
-
-### Why should I use `remove-lockfiles`?
-
-// TODO
+From now on, lockfiles will never get committed into your project even if they're generated. `remove-lockfiles` will unstage and also remove any lockfiles before any commits.
 
 ## Contributors
 
 Thanks goes to these people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars2.githubusercontent.com/u/22868432?v=3" width="100px;"/><br /><sub>Lufty Wiranda</sub>](https://github.com/luftywiranda13)<br />[💻](https://github.com/luftywiranda13/remove-lockfiles/commits?author=luftywiranda13 "Code") [📖](https://github.com/luftywiranda13/remove-lockfiles/commits?author=luftywiranda13 "Documentation") [🚇](#infra-luftywiranda13 "Infrastructure (Hosting, Build-Tools, etc)") |
-| :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/22868432?v=3" width="100px;"/><br /><sub>Lufty Wiranda</sub>](https://github.com/luftywiranda13)<br />[💻](https://github.com/luftywiranda13/remove-lockfiles/commits?author=luftywiranda13 "Code") [📖](https://github.com/luftywiranda13/remove-lockfiles/commits?author=luftywiranda13 "Documentation") [🚇](#infra-luftywiranda13 "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/170270?v=4" width="100px;"/><br /><sub>Sindre Sorhus</sub>](https://sindresorhus.com)<br />[💬](#question-sindresorhus "Answering Questions") [🤔](#ideas-sindresorhus "Ideas, Planning, & Feedback") | [<img src="https://avatars0.githubusercontent.com/u/810438?v=4" width="100px;"/><br /><sub>Dan Abramov</sub>](http://twitter.com/dan_abramov)<br />[💬](#question-gaearon "Answering Questions") [🤔](#ideas-gaearon "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/9636410?v=4" width="100px;"/><br /><sub>Ade Viankakrisna Fadlil</sub>](https://musify.id)<br />[💬](#question-viankakrisna "Answering Questions") [🤔](#ideas-viankakrisna "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/364677?v=4" width="100px;"/><br /><sub>Jon Crenshaw</sub>](http://linkedin.com/in/jdcrensh)<br />[🤔](#ideas-jdcrensh "Ideas, Planning, & Feedback") |
+| :---: | :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
