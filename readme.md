@@ -50,6 +50,12 @@ We need to run `remove-lockfiles` before committing. To do that, edit your `pack
 
 From now on, lockfiles will never get committed into your project even if they're generated. `remove-lockfiles` will unstage and also remove any lockfiles before any commits.
 
+> <strong>Tip:</strong> If you want to remove the *already committed* lockfiles:
+>
+> 1. Remove it from your repository by running `git rm package-lock.json/yarn.lock`
+> 2. Then, run `git commit -am "remove lockfiles"`
+> 3. Finally, use this package so lockfiles will never bother you again
+
 ## Contributors
 
 Thanks goes to these people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
