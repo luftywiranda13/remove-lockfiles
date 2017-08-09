@@ -58,6 +58,17 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
+  "eslintConfig": {
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "extends": "airbnb-base",
+    "rules": {
+      "no-plusplus": "off",
+      "strict": "off"
+    }
+  },
   "jest": {
     "testEnvironment": "node",
     "collectCoverageFrom": [
