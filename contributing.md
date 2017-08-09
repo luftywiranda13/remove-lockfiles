@@ -53,6 +53,4 @@ pre-commit
 
 ## Help needed
 
-Please checkout the [`roadmap.md`](./other/roadmap.md) and the open issues.
-
-Also, please watch the repo and respond to questions/bug reports/feature requests, Thanks!
+Please watch the repo and respond to questions/bug reports/feature requests, Thanks!

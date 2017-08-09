@@ -6,11 +6,8 @@
 [![npm](https://img.shields.io/npm/dt/remove-lockfiles.svg?style=flat-square)](https://npm-stat.com/charts.html?package=remove-lockfiles&from=2016-04-01)
 [![Travis branch](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
 [![Codecov branch](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://codecov.io/github/luftywiranda13/remove-lockfiles)
-<br />
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square)](./other/code_of_conduct.md)
-[![Roadmap](https://img.shields.io/badge/%F0%9F%93%94-roadmap-CD9523.svg?style=flat-square)](./other/roadmap.md)
 
 ## Why?
 
@@ -19,7 +16,7 @@
 - Not only unstage, but also remove any lockfiles
 - *[Unstaging only](https://github.com/facebookincubator/create-react-app/pull/2700)* will introduce new problems
 - No need to worry whether contributors are using `npm` or `yarn`
-- No need to specify `package-lock=false` in `.npmrc`. How about in `.yarnrc`?
+- If you specified `package-lock=false` in `.npmrc`. How about in `.yarnrc`?
 - A cross-platform solution. Works on macOS, Linux, and Windows
 
 ## Installation
