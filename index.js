@@ -1,23 +1,21 @@
 'use strict';
 
+const findUp = require('find-up');
 const shell = require('shelljs');
 
-const exec = shell.exec;
-const rm = shell.rm;
+shell.config.silent = true;
 
-function remove(files) {
-  rm('-f', files);
+function remove(filepath) {
+  shell.rm('-f', filepath);
 }
 
-function unstage(files) {
-  for (let i = 0; i < files.length; i++) {
-    exec(`git reset HEAD ${files[i]}`, { silent: true });
-  }
+function unstage(filepath) {
+  shell.exec(`git reset HEAD ${filepath}`, { silent: true });
 }
 
 module.exports = () => {
-  const lockfiles = ['package-lock.json', 'yarn.lock'];
+  const lockfile = findUp.sync(['package-lock.json', 'yarn.lock']);
 
-  unstage(lockfiles);
-  remove(lockfiles);
+  unstage(lockfile);
+  remove(lockfile);
 };
