@@ -17,6 +17,45 @@
         "doc",
         "infra"
       ]
+    },
+    {
+      "login": "sindresorhus",
+      "name": "Sindre Sorhus",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/170270?v=4",
+      "profile": "https://sindresorhus.com",
+      "contributions": [
+        "question",
+        "ideas"
+      ]
+    },
+    {
+      "login": "gaearon",
+      "name": "Dan Abramov",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/810438?v=4",
+      "profile": "http://twitter.com/dan_abramov",
+      "contributions": [
+        "question",
+        "ideas"
+      ]
+    },
+    {
+      "login": "viankakrisna",
+      "name": "Ade Viankakrisna Fadlil",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/9636410?v=4",
+      "profile": "https://musify.id",
+      "contributions": [
+        "question",
+        "ideas"
+      ]
+    },
+    {
+      "login": "jdcrensh",
+      "name": "Jon Crenshaw",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/364677?v=4",
+      "profile": "http://linkedin.com/in/jdcrensh",
+      "contributions": [
+        "ideas"
+      ]
     }
   ]
 }
