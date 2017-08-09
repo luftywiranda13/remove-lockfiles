@@ -11,7 +11,7 @@ function remove(files) {
 
 function unstage(files) {
   for (let i = 0; i < files.length; i++) {
-    exec(`git rm -f --cached -- ${files[i]}`, { silent: true });
+    exec(`git reset HEAD ${files[i]}`, { silent: true });
   }
 }
 
