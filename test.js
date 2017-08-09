@@ -3,7 +3,7 @@ const shell = require('shelljs');
 
 const removeLockfiles = require('./');
 
-test('removes lockfiles', () => {
+it('removes lockfiles', () => {
   const lockfiles = ['package-lock.json', 'yarn.lock'];
 
   shell.touch(lockfiles);
