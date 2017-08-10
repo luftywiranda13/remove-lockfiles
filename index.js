@@ -5,13 +5,8 @@ const shell = require('shelljs');
 
 shell.config.silent = true;
 
-function remove(filepath) {
-  shell.rm('-f', filepath);
-}
-
-function unstage(filepath) {
-  shell.exec(`git reset HEAD ${filepath}`);
-}
+const remove = filepath => shell.rm('-f', filepath);
+const unstage = filepath => shell.exec(`git reset HEAD ${filepath}`);
 
 module.exports = () => {
   const lockfile = findUp.sync(['package-lock.json', 'yarn.lock']);
