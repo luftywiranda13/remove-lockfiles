@@ -10,7 +10,7 @@ function remove(filepath) {
 }
 
 function unstage(filepath) {
-  shell.exec(`git reset HEAD ${filepath}`, { silent: true });
+  shell.exec(`git reset HEAD ${filepath}`);
 }
 
 module.exports = () => {

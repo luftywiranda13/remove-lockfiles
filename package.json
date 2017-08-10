@@ -20,12 +20,9 @@
     "cz": "git-cz",
     "contributors:generate": "all-contributors generate",
     "contributors:add": "all-contributors add",
-    "lint": "eslint .",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    "test": "jest",
-    "validate": "npm run lint && npm run test:coverage",
-    "precommit": "node cli.js && lint-staged && opt --in pre-commit --exec \"npm run test:coverage\"",
+    "pretest": "eslint .",
+    "test": "jest --coverage",
+    "precommit": "node cli.js && lint-staged && opt --in pre-commit --exec \"npm run test\"",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\""
   },
   "bin": {
