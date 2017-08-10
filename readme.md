@@ -5,9 +5,7 @@
 [![npm](https://img.shields.io/npm/v/remove-lockfiles.svg?style=flat-square)](https://www.npmjs.com/package/remove-lockfiles)
 [![npm](https://img.shields.io/npm/dt/remove-lockfiles.svg?style=flat-square)](https://npm-stat.com/charts.html?package=remove-lockfiles&from=2016-04-01)
 [![Travis branch](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
-[![Codecov branch](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://codecov.io/github/luftywiranda13/remove-lockfiles)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Why?
 
@@ -16,7 +14,7 @@
 - Not only unstage, but also remove any lockfiles
 - *[Unstaging only](https://github.com/facebookincubator/create-react-app/pull/2700)* will introduce new problems
 - No need to worry whether contributors are using `npm` or `yarn`
-- If you specified `package-lock=false` in `.npmrc`. How about in `.yarnrc`?
+- If you specify `package-lock=false` in `.npmrc`, then what about in `.yarnrc`?
 - A cross-platform solution. Works on macOS, Linux, and Windows
 
 ## Installation
