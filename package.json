@@ -17,13 +17,13 @@
     "npm": ">=3"
   },
   "scripts": {
-    "cz": "git-cz",
-    "contributors:generate": "all-contributors generate",
+    "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
     "contributors:add": "all-contributors add",
-    "pretest": "eslint .",
-    "test": "jest --coverage",
-    "precommit": "node cli.js && lint-staged && opt --in pre-commit --exec \"npm run test\"",
-    "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\""
+    "contributors:generate": "all-contributors generate",
+    "cz": "git-cz",
+    "precommit": "node cli.js && opt --in pre-commit --exec \"npm run test\"",
+    "pretest": "eslint . --fix",
+    "test": "jest --coverage"
   },
   "bin": {
     "remove-lockfiles": "cli.js"
@@ -41,13 +41,10 @@
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
     "eslint": "4.4.1",
-    "eslint-config-airbnb-base": "11.3.1",
-    "eslint-plugin-import": "2.7.0",
+    "eslint-config-bunny": "4.0.2",
     "husky": "0.14.3",
     "jest": "20.0.4",
-    "lint-staged": "4.0.3",
     "opt-cli": "1.5.1",
-    "prettier": "1.5.3",
     "validate-commit-msg": "2.14.0"
   },
   "config": {
@@ -56,11 +53,10 @@
     }
   },
   "eslintConfig": {
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "extends": "airbnb-base",
+    "extends": [
+      "bunny",
+      "bunny/recommended"
+    ],
     "rules": {
       "no-plusplus": "off",
       "strict": "off"
@@ -79,13 +75,6 @@
         "statements": 100
       }
     }
-  },
-  "lint-staged": {
-    "src/**/*.js": [
-      "prettier --trailing-comma es5 --single-quote --write",
-      "eslint --fix",
-      "git add"
-    ]
   },
   "keywords": [
     "git",
