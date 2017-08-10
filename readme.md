@@ -14,7 +14,7 @@
 - Not only unstage, but also remove any lockfiles
 - *[Unstaging only](https://github.com/facebookincubator/create-react-app/pull/2700)* will introduce new problems
 - No need to worry whether contributors are using `npm` or `yarn`
-- If you specify `package-lock=false` in `.npmrc`, then what about in `.yarnrc`?
+- If we specify `package-lock=false` in `.npmrc`, then what about in `.yarnrc`?
 - A cross-platform solution. Works on macOS, Linux, and Windows
 
 ## Installation
@@ -33,7 +33,9 @@ npm install remove-lockfiles --save-dev
 
 ## Usage
 
-We need to run `remove-lockfiles` before committing. To do that, edit your `package.json` to include this configuration:
+In order to prevent lockfiles slip into our code base, we need to integrate `remove-lockfiles` in pre-commit hook. 
+
+So, edit `package.json` to include this configuration:
 
 ```js
 {
@@ -43,13 +45,13 @@ We need to run `remove-lockfiles` before committing. To do that, edit your `pack
 }
 ```
 
-From now on, lockfiles will never get committed into your project even if they're generated. `remove-lockfiles` will unstage and also remove any lockfiles before any commits.
+From now on, `remove-lockfiles` will unstage and remove lockfiles before any commits.
 
-> <strong>Tip:</strong> If you want to remove the *already committed* lockfiles:
+> <strong>Tip:</strong> If we want to remove the *already committed* lockfiles:
 >
-> 1. Remove it from your repository by running `git rm package-lock.json/yarn.lock`
-> 2. Then, run `git commit -am "remove lockfiles"`
-> 3. Finally, use this package so lockfiles will never bother you again
+> 1. First, run `git rm package-lock.json` or `git rm yarn.lock`
+> 2. Commit the change with `git commit -am "remove lockfiles"`
+> 3. Finally, use this package so lockfiles will never bother us again
 
 ## Contributors
 
@@ -64,7 +66,10 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 ## Related
 
-// TODO
+- [husky](https://github.com/typicode/husky) － Git hooks made easy
+- [shelljs](https://github.com/shelljs/shelljs) － Cross-platform Unix shell commands for Node.js
+- [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
+- [find-up](https://github.com/sindresorhus/find-up) － Find a file or directory by walking up parent directories
 
 ## License
 
