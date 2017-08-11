@@ -50,7 +50,7 @@ From now on, `remove-lockfiles` will unstage and remove lockfiles before any com
 > <strong>Tip:</strong> If we want to remove the *already committed* lockfiles:
 >
 > 1. First, run `git rm package-lock.json` or `git rm yarn.lock`
-> 2. Commit the change with `git commit -am "remove lockfiles"`
+> 2. Commit the change with `git commit -m "remove lockfiles"`
 > 3. Finally, use this package so lockfiles will never bother us again
 
 ## Contributors
