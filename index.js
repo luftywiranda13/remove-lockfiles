@@ -1,16 +1,27 @@
 'use strict';
 
-const findUp = require('find-up');
+const chalk = require('chalk');
+const hasLockfile = require('has-lockfile');
 const shell = require('shelljs');
 
 shell.config.silent = true;
 
-const remove = filepath => shell.rm('-f', filepath);
-const unstage = filepath => shell.exec(`git reset HEAD ${filepath}`);
+const remove = lockfile => shell.rm('-f', lockfile);
+const unstage = lockfile => shell.exec(`git reset HEAD ${lockfile}`);
 
 module.exports = () => {
-  const lockfile = findUp.sync(['package-lock.json', 'yarn.lock']);
+  const log = console.log;
+  const lockfile = hasLockfile();
 
-  unstage(lockfile);
-  remove(lockfile);
+  if (lockfile !== null) {
+    try {
+      unstage(lockfile);
+      remove(lockfile);
+    } catch (e) {
+      log(chalk.red(e));
+    }
+    log(chalk.green('Unstaged + removed: ') + lockfile);
+  } else {
+    log(chalk.blue('No lockfile detected'));
+  }
 };
