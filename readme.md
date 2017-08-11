@@ -10,32 +10,38 @@
 ## Why?
 
 - [Lockfiles are for apps, not for libraries/packages](https://github.com/sindresorhus/ama/issues/479#issuecomment-310661514)
-- [Listing lockfiles in `.gitignore` is considered a bad approach](https://github.com/facebookincubator/create-react-app/pull/2014#issuecomment-300811661)
-- Not only unstage, but also remove any lockfiles
+- [Listing lockfiles in .gitignore is considered a bad approach](https://github.com/facebookincubator/create-react-app/pull/2014#issuecomment-300811661)
 - *[Unstaging only](https://github.com/facebookincubator/create-react-app/pull/2700)* will introduce new problems
+- Not only unstage, but also remove any lockfiles
 - No need to worry whether contributors are using `npm` or `yarn`
 - If we specify `package-lock=false` in `.npmrc`, then what about in `.yarnrc`?
-- A cross-platform solution. Works on macOS, Linux, and Windows
+- Works on macOS, Linux, and Windows
 
 ## Installation
 
-Install [husky](https://github.com/typicode/husky) to make utilizing `git-hooks` easier:
+```sh
+npm install remove-lockfiles --save-dev
+```
+
+## Usage
+
+For the *already committed* lockfiles:
+
+1. Run `git rm package-lock.json` or `git rm yarn.lock`
+2. Commit the change with `git commit -m "remove lockfiles"`
+3. Finally, use this package so lockfiles won't bother us again
+
+### Pre-commit hook
+
+#### With [husky](https://github.com/typicode/husky)
+
+Install `husky`:
 
 ```sh
 npm install husky --save-dev
 ```
 
-Then, install this package:
-
-```sh 
-npm install remove-lockfiles --save-dev 
-```
-
-## Usage
-
-In order to prevent lockfiles slip into our code base, we need to integrate `remove-lockfiles` in pre-commit hook. 
-
-So, edit `package.json` to include this configuration:
+Edit `package.json` to include this configuration:
 
 ```js
 {
@@ -45,13 +51,43 @@ So, edit `package.json` to include this configuration:
 }
 ```
 
-From now on, `remove-lockfiles` will unstage and remove lockfiles before any commits.
+#### With [pre-commit](https://github.com/observing/pre-commit)
 
-> <strong>Tip:</strong> If we want to remove the *already committed* lockfiles:
->
-> 1. First, run `git rm package-lock.json` or `git rm yarn.lock`
-> 2. Commit the change with `git commit -m "remove lockfiles"`
-> 3. Finally, use this package so lockfiles will never bother us again
+Install `pre-commit`:
+
+```sh
+npm install pre-commit --save-dev
+```
+
+Edit `package.json` to include this configuration:
+
+```js
+{
+  "scripts": {
+    "remove-lockfiles": "remove-lockfiles",
+  },
+  "pre-commit": [
+    "remove-lockfiles",
+    // other tasks
+  ]
+}
+```
+
+### Standalone script
+
+Please note that if we use `remove-lockfiles` as a standalone script, it will just unstage and remove the lockfiles but not prevent them to be committed.
+
+Install `remove-lockfiles` globally:
+
+```sh
+npm install remove-lockfiles --global
+```
+
+Run the script inside the root directory of a Node.js project:
+
+```sh
+remove-lockfiles
+```
 
 ## Contributors
 
@@ -67,6 +103,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 ## Related
 
 - [husky](https://github.com/typicode/husky) － Git hooks made easy
+- [pre-commit](https://github.com/observing/pre-commit) － Automatically install pre-commit hooks for your npm modules
 - [shelljs](https://github.com/shelljs/shelljs) － Cross-platform Unix shell commands for Node.js
 - [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
 - [find-up](https://github.com/sindresorhus/find-up) － Find a file or directory by walking up parent directories
