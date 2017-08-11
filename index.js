@@ -19,6 +19,7 @@ module.exports = () => {
       remove(lockfile);
     } catch (e) {
       log(chalk.red(e));
+      process.exit(1);
     }
     log(chalk.green('Unstaged + removed: ') + lockfile);
   } else {
