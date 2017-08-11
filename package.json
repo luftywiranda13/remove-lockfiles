@@ -14,10 +14,11 @@
     "cz": "git-cz",
     "precommit": "node cli.js && opt --in pre-commit --exec \"npm run test\"",
     "pretest": "eslint . --fix",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "dependencies": {
-    "find-up": "2.1.0",
+    "chalk": "2.1.0",
+    "has-lockfile": "1.0.0",
     "shelljs": "0.7.8"
   },
   "devDependencies": {
@@ -47,23 +48,13 @@
       "bunny/recommended"
     ],
     "rules": {
+      "no-console": "off",
       "no-plusplus": "off",
       "strict": "off"
     }
   },
   "jest": {
-    "testEnvironment": "node",
-    "collectCoverageFrom": [
-      "index.js"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    }
+    "testEnvironment": "node"
   },
   "author": {
     "name": "Lufty Wiranda",

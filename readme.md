@@ -106,7 +106,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 - [pre-commit](https://github.com/observing/pre-commit) － Automatically install pre-commit hooks for your npm modules
 - [shelljs](https://github.com/shelljs/shelljs) － Cross-platform Unix shell commands for Node.js
 - [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
-- [find-up](https://github.com/sindresorhus/find-up) － Find a file or directory by walking up parent directories
+- [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Check which lockfile is present in the working directory
 
 ## License
 
