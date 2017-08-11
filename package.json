@@ -3,15 +3,6 @@
   "version": "0.0.0-development",
   "description": "Prevent committing lockfiles",
   "license": "MIT",
-  "author": {
-    "name": "Lufty Wiranda",
-    "email": "lufty.wiranda@gmail.com",
-    "url": "https://www.instagram.com/luftywiranda13/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/luftywiranda13/remove-lockfiles.git"
-  },
   "engines": {
     "node": ">=4",
     "npm": ">=3"
@@ -25,13 +16,6 @@
     "pretest": "eslint . --fix",
     "test": "jest --coverage"
   },
-  "bin": {
-    "remove-lockfiles": "cli.js"
-  },
-  "files": [
-    "cli.js",
-    "index.js"
-  ],
   "dependencies": {
     "find-up": "2.1.0",
     "shelljs": "0.7.8"
@@ -47,6 +31,11 @@
     "opt-cli": "1.5.1",
     "validate-commit-msg": "2.14.0"
   },
+  "bin": "cli.js",
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
@@ -75,6 +64,15 @@
         "statements": 100
       }
     }
+  },
+  "author": {
+    "name": "Lufty Wiranda",
+    "email": "lufty.wiranda@gmail.com",
+    "url": "https://www.instagram.com/luftywiranda13/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luftywiranda13/remove-lockfiles.git"
   },
   "keywords": [
     "git",
