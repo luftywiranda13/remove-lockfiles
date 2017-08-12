@@ -8,11 +8,12 @@
     "npm": ">=3"
   },
   "scripts": {
+    "start": "node cli.js",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
     "cz": "git-cz",
-    "precommit": "node cli.js && opt --in pre-commit --exec \"npm run test\"",
+    "precommit": "npm start && opt --in pre-commit --exec \"npm run test\"",
     "pretest": "eslint . --fix",
     "test": "jest"
   },
