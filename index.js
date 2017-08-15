@@ -7,7 +7,7 @@ const shell = require('shelljs');
 shell.config.silent = true;
 
 const remove = lockfile => shell.rm('-f', lockfile);
-const unstage = lockfile => shell.exec(`git reset HEAD ${lockfile}`);
+const unstage = lockfile => shell.exec(`git rm --cached ${lockfile}`);
 
 module.exports = () => {
   const log = console.log;
