@@ -9,12 +9,10 @@
   },
   "scripts": {
     "start": "node cli.js",
-    "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "cz": "git-cz",
-    "precommit": "npm start && opt --in pre-commit --exec \"npm run test\"",
-    "pretest": "eslint . --fix",
+    "precommit": "npm start",
+    "pretest": "eslint .",
     "test": "jest"
   },
   "dependencies": {
@@ -24,25 +22,16 @@
   },
   "devDependencies": {
     "all-contributors-cli": "4.4.0",
-    "commitizen": "2.9.6",
-    "cz-conventional-changelog": "2.0.0",
     "eslint": "4.4.1",
     "eslint-config-bunny": "4.1.1",
     "husky": "0.14.3",
-    "jest": "20.0.4",
-    "opt-cli": "1.5.1",
-    "validate-commit-msg": "2.14.0"
+    "jest": "20.0.4"
   },
   "bin": "cli.js",
   "files": [
     "cli.js",
     "index.js"
   ],
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
-  },
   "eslintConfig": {
     "extends": [
       "bunny",

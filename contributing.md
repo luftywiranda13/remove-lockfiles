@@ -35,22 +35,6 @@ Follow the prompt. If you‘ve already added yourself to the list and are making
 new type of contribution, you can run it again and select the added contribution
 type.
 
-## Committing and Pushing changes
-
-This project uses [semantic-release](https://npmjs.com/package/semantic-release) to do automatic releases and generate a changelog based on the
-commit history. So we follow [a convention](https://github.com/conventional-changelog/conventional-changelog-angular/blob/ed32559941719a130bb0327f886d6a32a8cbc2ba/convention.md) for commit messages. You don‘t have to follow this convention if you don‘t like to. Just know that when we merge your commit, we‘ll probably use “Squash and Merge” so we can change the commit message.
-
-### Opt into git hooks
-
-There are git hooks set up with this project that are automatically installed when you install dependencies. They‘re
-really handy, but are turned off by default (so as to not hinder new contributors). You can opt into these by creating
-a file called `.opt-in` at the root of the project and putting this inside:
-
-```sh
-commit-msg
-pre-commit
-```
-
 ## Help needed
 
 Please watch the repo and respond to questions/bug reports/feature requests, Thanks!
