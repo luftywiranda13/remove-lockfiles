@@ -1,7 +1,5 @@
 # remove-lockfiles
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/luftywiranda13/remove-lockfiles.svg)](https://greenkeeper.io/)
-
 [![npm](https://img.shields.io/npm/v/remove-lockfiles.svg?style=flat-square)](https://www.npmjs.com/package/remove-lockfiles)
 [![Travis branch](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
 [![Codecov branch](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://codecov.io/gh/luftywiranda13/remove-lockfiles)
