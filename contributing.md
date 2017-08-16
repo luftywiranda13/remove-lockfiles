@@ -9,13 +9,13 @@ Thanks for being willing to contribute!
 
 1.  Fork and clone the repo
 2.  `npm install` to install dependencies
-3.  `npm run test` to validate you‘ve got it working
+3.  `npm test` to validate you‘ve got it working
 4.  Create a branch for your PR
 
 > Tip: Keep your `master` branch pointing at the original repository and make pull requests from branches on your fork. To do this, run:
 >
 > ```
-> git remote add upstream https://github.com/luftywiranda13/remove-lockfiles.git
+> git remote add upstream https://github.com/luftywiranda13/remove-lockfiles
 > git fetch upstream
 > git branch --set-upstream-to=upstream/master master
 > ```
@@ -35,6 +35,13 @@ Follow the prompt. If you‘ve already added yourself to the list and are making
 new type of contribution, you can run it again and select the added contribution
 type.
 
+## Committing and Pushing changes
+
+This project uses [semantic-release](https://npmjs.com/package/semantic-release) to do automatic releases and generate a changelog based on the
+commit history. So we follow [a convention](https://github.com/conventional-changelog/conventional-changelog-angular/blob/ed32559941719a130bb0327f886d6a32a8cbc2ba/convention.md) for commit messages. You don‘t have to follow this convention if you don‘t like to. Just know that when we merge your commit, we‘ll probably use “Squash and Merge” so we can change the commit message.
+
 ## Help needed
 
-Please watch the repo and respond to questions/bug reports/feature requests, Thanks!
+Please checkout the [`roadmap.md`](./other/roadmap.md) and the open issues.
+
+Also, please watch the repo and respond to questions/bug reports/feature requests, Thanks!

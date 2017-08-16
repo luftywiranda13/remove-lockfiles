@@ -3,6 +3,12 @@
   "version": "0.0.0-development",
   "description": "Prevent committing lockfiles",
   "license": "MIT",
+  "repository": "https://github.com/luftywiranda13/remove-lockfiles",
+  "author": {
+    "name": "Lufty Wiranda",
+    "email": "lufty.wiranda@gmail.com",
+    "url": "https://www.instagram.com/luftywiranda13"
+  },
   "engines": {
     "node": ">=4",
     "npm": ">=3"
@@ -44,16 +50,8 @@
     }
   },
   "jest": {
-    "testEnvironment": "node"
-  },
-  "author": {
-    "name": "Lufty Wiranda",
-    "email": "lufty.wiranda@gmail.com",
-    "url": "https://www.instagram.com/luftywiranda13/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/luftywiranda13/remove-lockfiles.git"
+    "testEnvironment": "node",
+    "collectCoverage": true
   },
   "keywords": [
     "git",

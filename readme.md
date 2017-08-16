@@ -1,11 +1,11 @@
 # remove-lockfiles
 
-> Prevent committing lockfiles
-
 [![npm](https://img.shields.io/npm/v/remove-lockfiles.svg?style=flat-square)](https://www.npmjs.com/package/remove-lockfiles)
-[![npm](https://img.shields.io/npm/dt/remove-lockfiles.svg?style=flat-square)](https://npm-stat.com/charts.html?package=remove-lockfiles&from=2016-04-01)
 [![Travis branch](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
+[![Codecov branch](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://codecov.io/gh/luftywiranda13/remove-lockfiles)
+[![npm](https://img.shields.io/npm/dm/remove-lockfiles.svg?style=flat-square)](https://npm-stat.com/charts.html?package=remove-lockfiles&from=2016-04-01)
+
+Prevent committing lockfiles
 
 ## Why?
 
@@ -89,6 +89,14 @@ Run the script inside the root directory of a Node.js project:
 remove-lockfiles
 ```
 
+## Related
+
+- [husky](https://github.com/typicode/husky) － Git hooks made easy
+- [pre-commit](https://github.com/observing/pre-commit) － Automatically install pre-commit hooks for your npm modules
+- [shelljs](https://github.com/shelljs/shelljs) － Cross-platform Unix shell commands for Node.js
+- [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
+- [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Check which lockfile is present in the working directory
+
 ## Contributors
 
 Thanks goes to these people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
@@ -99,14 +107,6 @@ Thanks goes to these people ([emoji key](https://github.com/kentcdodds/all-contr
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
-
-## Related
-
-- [husky](https://github.com/typicode/husky) － Git hooks made easy
-- [pre-commit](https://github.com/observing/pre-commit) － Automatically install pre-commit hooks for your npm modules
-- [shelljs](https://github.com/shelljs/shelljs) － Cross-platform Unix shell commands for Node.js
-- [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
-- [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Check which lockfile is present in the working directory
 
 ## License
 
