@@ -14,13 +14,9 @@ module.exports = () => {
   const lockfile = hasLockfile();
 
   if (lockfile !== null) {
-    try {
-      unstage(lockfile);
-      remove(lockfile);
-    } catch (e) {
-      log(chalk.red(e));
-      process.exit(1);
-    }
+    unstage(lockfile);
+    remove(lockfile);
+
     log(chalk.green('Unstaged + removed: ') + lockfile);
   } else {
     log(chalk.blue('No lockfile detected'));

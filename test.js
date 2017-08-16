@@ -3,16 +3,21 @@ const shell = require('shelljs');
 
 const removeLockfiles = require('./');
 
-it('removes package-lock.json', () => {
+test('removes package-lock.json', () => {
   shell.touch('package-lock.json');
   removeLockfiles();
 
   expect(hasLockfile()).toBe(null);
 });
 
-it('removes yarn.lock', () => {
+test('removes yarn.lock', () => {
   shell.touch('yarn.lock');
   removeLockfiles();
 
+  expect(hasLockfile()).toBe(null);
+});
+
+test('null', () => {
+  removeLockfiles();
   expect(hasLockfile()).toBe(null);
 });
