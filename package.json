@@ -10,8 +10,7 @@
     "url": "https://www.instagram.com/luftywiranda13"
   },
   "engines": {
-    "node": ">=4",
-    "npm": ">=3"
+    "node": ">=4"
   },
   "scripts": {
     "start": "node cli.js",
@@ -41,7 +40,6 @@
   ],
   "eslintConfig": {
     "extends": [
-      "bunny",
       "bunny/recommended"
     ],
     "rules": {
