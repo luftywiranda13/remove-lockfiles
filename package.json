@@ -63,6 +63,10 @@
     "workflow",
     "commit",
     "cli",
-    "cli-app"
+    "cli-app",
+    "lockfile",
+    "package-lock",
+    "yarn.lock",
+    "cross-platform"
   ]
 }
