@@ -44,9 +44,7 @@
       "bunny/recommended"
     ],
     "rules": {
-      "no-console": "off",
-      "no-plusplus": "off",
-      "strict": "off"
+      "no-console": "off"
     }
   },
   "jest": {
