@@ -2,6 +2,7 @@
 
 const chalk = require('chalk');
 const hasLockfile = require('has-lockfile');
+const logSymbols = require('log-symbols');
 const shell = require('shelljs');
 
 shell.config.silent = true;
@@ -17,8 +18,8 @@ module.exports = () => {
     unstage(lockfile);
     remove(lockfile);
 
-    log(chalk.green('Unstaged + removed: ') + lockfile);
+    log(logSymbols.success, chalk.green('Removed: ') + lockfile);
   } else {
-    log(chalk.blue('No lockfile detected'));
+    log(logSymbols.info, chalk.blue('No lockfile detected'));
   }
 };
