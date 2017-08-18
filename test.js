@@ -1,3 +1,5 @@
+'use strict';
+
 const hasLockfile = require('has-lockfile');
 const shell = require('shelljs');
 
