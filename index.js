@@ -14,12 +14,12 @@ module.exports = () => {
   const log = console.log;
   const lockfile = hasLockfile();
 
-  if (lockfile !== null) {
+  if (lockfile === null) {
+    log(logSymbols.info, chalk.blue('No lockfile detected'));
+  } else {
     unstage(lockfile);
     remove(lockfile);
 
     log(logSymbols.success, chalk.green('Removed: ') + lockfile);
-  } else {
-    log(logSymbols.info, chalk.blue('No lockfile detected'));
   }
 };
