@@ -25,12 +25,6 @@ npm install remove-lockfiles --save-dev
 
 ## Usage
 
-For the *already committed* lockfiles:
-
-1. Run `git rm package-lock.json` or `git rm yarn.lock`
-2. Commit the change with `git commit -m "remove lockfiles"`
-3. Finally, use this package so lockfiles won't bother us again
-
 ### Pre-commit hook
 
 #### With [husky](https://github.com/typicode/husky)
