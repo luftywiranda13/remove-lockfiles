@@ -105,4 +105,4 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 ## License
 
-MIT &copy; [Lufty Wiranda](https://www.instagram.com/luftywiranda13/)
+MIT &copy; [Lufty Wiranda](https://www.instagram.com/luftywiranda13)
