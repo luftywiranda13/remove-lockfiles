@@ -17,7 +17,6 @@
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
     "precommit": "remove-lockfiles && xo --fix && lint-staged",
-    "lint:fix": "xo --fix",
     "test": "xo && jest"
   },
   "bin": "cli.js",
