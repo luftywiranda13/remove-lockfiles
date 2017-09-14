@@ -7,9 +7,6 @@ const shell = require('shelljs');
 
 shell.config.silent = true;
 
-const remove = lockfile => shell.rm('-f', lockfile);
-const unstage = lockfile => shell.exec(`git rm --cached ${lockfile}`);
-
 module.exports = () => {
   const log = console.log;
   const lockfile = hasLockfile();
@@ -17,8 +14,8 @@ module.exports = () => {
   if (lockfile === null) {
     log(logSymbols.info, chalk.blue('No lockfile detected'));
   } else {
-    unstage(lockfile);
-    remove(lockfile);
+    shell.exec(`git rm --cached ${lockfile}`);
+    shell.rm('-f', lockfile);
 
     log(logSymbols.success, chalk.green('Removed: ') + lockfile);
   }
