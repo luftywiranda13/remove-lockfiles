@@ -19,7 +19,7 @@ test('removes yarn.lock', () => {
   expect(hasLockfile()).toBe(null);
 });
 
-test('null', () => {
+test('do nothing', () => {
   removeLockfiles();
   expect(hasLockfile()).toBe(null);
 });
