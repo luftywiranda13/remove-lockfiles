@@ -20,6 +20,6 @@ module.exports = cwd => {
       unstage(target);
     });
 
-    return del(lockfile, { cwd });
+    return del(lockfile, {cwd});
   }
 };
