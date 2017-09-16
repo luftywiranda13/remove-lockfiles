@@ -15,7 +15,7 @@
   "scripts": {
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "precommit": "remove-lockfiles && xo --fix && lint-staged",
+    "precommit": "node cli.js && xo --fix && lint-staged",
     "test": "node cli.js && xo && jest"
   },
   "bin": "cli.js",
@@ -36,7 +36,6 @@
     "jest": "^21.0.2",
     "lint-staged": "^4.2.1",
     "prettier": "^1.6.1",
-    "remove-lockfiles": "^1.1.1",
     "xo": "^0.18.2"
   },
   "jest": {
