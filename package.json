@@ -15,18 +15,14 @@
   "scripts": {
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "precommit": "remove-lockfiles && xo --fix && lint-staged",
-    "test": "node cli.js && xo && jest"
+    "precommit": "xo --fix && lint-staged",
+    "test": "xo && jest"
   },
-  "bin": "cli.js",
   "files": [
-    "cli.js",
     "index.js"
   ],
   "dependencies": {
-    "chalk": "^2.1.0",
     "has-lockfile": "^1.0.1",
-    "log-symbols": "^2.0.0",
     "shelljs": "^0.7.8"
   },
   "devDependencies": {
@@ -36,7 +32,6 @@
     "jest": "^21.0.2",
     "lint-staged": "^4.2.1",
     "prettier": "^1.6.1",
-    "remove-lockfiles": "^1.1.1",
     "xo": "^0.18.2"
   },
   "jest": {
@@ -65,8 +60,6 @@
     "developer-experience",
     "workflow",
     "commit",
-    "cli",
-    "cli-app",
     "lockfile",
     "package-lock",
     "yarn.lock",
