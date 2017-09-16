@@ -5,21 +5,22 @@ const shell = require('shelljs');
 
 const removeLockfiles = require('./');
 
-test('removes package-lock.json', () => {
+test('removes package-lock.json', async () => {
   shell.touch('package-lock.json');
-  removeLockfiles();
+  await removeLockfiles();
 
   expect(hasLockfile()).toBe(null);
 });
 
-test('removes yarn.lock', () => {
+test('removes yarn.lock', async () => {
   shell.touch('yarn.lock');
-  removeLockfiles();
+  await removeLockfiles();
 
   expect(hasLockfile()).toBe(null);
 });
 
-test('do nothing', () => {
-  removeLockfiles();
+test('do nothing', async () => {
+  await removeLockfiles();
+
   expect(hasLockfile()).toBe(null);
 });
