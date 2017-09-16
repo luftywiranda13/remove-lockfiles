@@ -47,15 +47,13 @@
   },
   "keywords": [
     "git",
-    "git-hooks",
-    "hooks",
-    "pre-commit",
+    "staged",
     "npm",
     "yarn",
-    "developer-experience",
-    "workflow",
     "commit",
     "lockfile",
+    "remove",
+    "delete",
     "package-lock",
     "yarn.lock",
     "cross-platform"
