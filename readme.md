@@ -6,7 +6,7 @@
 [![Coverage Status](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg)](https://codecov.io/gh/luftywiranda13/remove-lockfiles)
 [![Downloads Status](https://img.shields.io/npm/dm/remove-lockfiles.svg)](https://npm-stat.com/charts.html?package=remove-lockfiles&from=2016-04-01)
 
-Prevent committing lockfiles
+Unstage then remove lockfiles
 
 ## Why?
 

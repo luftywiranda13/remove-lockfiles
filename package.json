@@ -1,7 +1,7 @@
 {
   "name": "remove-lockfiles",
   "version": "0.0.0-development",
-  "description": "Prevent committing lockfiles",
+  "description": "Unstage then remove lockfiles",
   "license": "MIT",
   "repository": "https://github.com/luftywiranda13/remove-lockfiles",
   "author": {
