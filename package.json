@@ -16,7 +16,8 @@
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
     "precommit": "node cli.js && xo --fix",
-    "test": "node cli.js && xo && jest"
+    "pretest": "node cli.js",
+    "test": "xo && jest"
   },
   "bin": "cli.js",
   "files": [
@@ -27,7 +28,7 @@
     "chalk": "^2.1.0",
     "del": "^3.0.0",
     "execa": "^0.8.0",
-    "has-lockfile": "^1.0.2",
+    "has-lockfile": "^1.0.3",
     "log-symbols": "^2.0.0",
     "meow": "^3.7.0"
   },
