@@ -3,11 +3,25 @@
 
 const chalk = require('chalk');
 const logSymbols = require('log-symbols');
+const meow = require('meow');
 
-const res = require('./')();
+const removeLockfiles = require('./');
+
+const cli = meow(`
+  Usage
+    $ remove-lockfiles <path>
+
+  Examples
+    $ remove-lockfiles
+    $ remove-lockfiles foo
+    $ remove-lockfiles ../bar
+`);
+
+const res = removeLockfiles(cli.input[0] || process.cwd());
+const log = console.log;
 
 if (res === null) {
-  console.log(logSymbols.info, chalk.blue('No lockfile detected'));
+  log(logSymbols.info, chalk.blue('No lockfile found'));
 } else {
-  console.log(logSymbols.success, chalk.green('Removed: ') + res);
+  log(logSymbols.success, chalk.green('Removed: ') + res);
 }
