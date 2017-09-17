@@ -16,7 +16,7 @@ module.exports = cwd => {
     try {
       execa.sync('git', ['rm', '--cached', target]);
     } catch (err) {
-      execa('git', ['reset', 'HEAD', target]);
+      execa.sync('git', ['reset', 'HEAD', target]);
     } finally {
       del.sync(target, {force: true, cwd});
     }
