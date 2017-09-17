@@ -27,14 +27,14 @@
     "chalk": "^2.1.0",
     "del": "^3.0.0",
     "execa": "^0.8.0",
-    "has-lockfile": "^1.0.1",
+    "has-lockfile": "^1.0.2",
     "log-symbols": "^2.0.0",
     "meow": "^3.7.0"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.4.0",
     "husky": "^0.14.3",
-    "jest": "^21.0.2",
+    "jest": "^21.1.0",
     "shelljs": "^0.7.8",
     "xo": "^0.18.2"
   },
