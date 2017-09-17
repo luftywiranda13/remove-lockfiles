@@ -70,7 +70,7 @@ Edit `package.json` to include this configuration:
 
 ### Standalone script
 
-Please note that if we use `remove-lockfiles` as a standalone script, it will just unstage and remove the lockfiles but not prevent them to be committed.
+Please note that if we use `remove-lockfiles` as a standalone script, it will just unstage and remove the lockfiles but can't prevent them to be committed.
 
 Install `remove-lockfiles` globally:
 
@@ -78,10 +78,18 @@ Install `remove-lockfiles` globally:
 npm install remove-lockfiles --global
 ```
 
-Run the script inside the root directory of a Node.js project:
+Run the script:
 
-```sh
-remove-lockfiles
+```
+$ remove-lockfiles --help
+
+  Usage
+    $ remove-lockfiles <path>
+
+  Examples
+    $ remove-lockfiles
+    $ remove-lockfiles foo
+    $ remove-lockfiles ../bar
 ```
 
 ## Related
