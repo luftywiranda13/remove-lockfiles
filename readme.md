@@ -1,5 +1,7 @@
 # remove-lockfiles
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/luftywiranda13/remove-lockfiles.svg)](https://greenkeeper.io/)
+
 [![Package Version](https://img.shields.io/npm/v/remove-lockfiles.svg)](https://www.npmjs.com/package/remove-lockfiles)
 [![Build Status: Linux](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
 [![Build Status: Windows](https://img.shields.io/appveyor/ci/luftywiranda13/remove-lockfiles/master.svg)](https://ci.appveyor.com/project/luftywiranda13/remove-lockfiles)
