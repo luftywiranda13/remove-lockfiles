@@ -1,18 +1,25 @@
 'use strict';
 
+const path = require('path');
+const del = require('del');
+const execa = require('execa');
 const hasLockfile = require('has-lockfile');
-const shell = require('shelljs');
 
-shell.config.silent = true;
+module.exports = cwd => {
+  cwd = cwd || process.cwd();
 
-module.exports = () => {
-  const lockfile = hasLockfile();
+  const lockfile = hasLockfile(cwd);
 
   if (lockfile !== null) {
-    shell.exec(`git rm --cached ${lockfile}`);
-    shell.rm('-f', lockfile);
+    const target = path.join(cwd, lockfile);
 
-    return lockfile;
+    try {
+      execa.sync('git', ['rm', '--cached', target]);
+    } catch (err) {
+      execa('git', ['reset', 'HEAD', target]);
+    } finally {
+      del.sync(target, {force: true, cwd});
+    }
   }
 
   return lockfile;

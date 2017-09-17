@@ -15,7 +15,7 @@
   "scripts": {
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "precommit": "node cli.js && xo --fix && lint-staged",
+    "precommit": "node cli.js && xo --fix",
     "test": "node cli.js && xo && jest"
   },
   "bin": "cli.js",
@@ -25,31 +25,25 @@
   ],
   "dependencies": {
     "chalk": "^2.1.0",
+    "del": "^3.0.0",
+    "execa": "^0.8.0",
     "has-lockfile": "^1.0.1",
     "log-symbols": "^2.0.0",
-    "shelljs": "^0.7.8"
+    "meow": "^3.7.0"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.4.0",
-    "eslint-config-prettier": "^2.5.0",
     "husky": "^0.14.3",
     "jest": "^21.0.2",
-    "lint-staged": "^4.2.1",
-    "prettier": "^1.6.1",
+    "shelljs": "^0.7.8",
     "xo": "^0.18.2"
   },
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --single-quote --trailing-comma es5 --write",
-      "git add"
-    ]
-  },
   "xo": {
-    "extends": "prettier",
+    "space": true,
     "envs": [
       "jest"
     ]
