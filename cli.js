@@ -17,11 +17,12 @@ const cli = meow(`
     $ remove-lockfiles ../bar
 `);
 
-const res = removeLockfiles(cli.input[0] || process.cwd());
-const log = console.log;
+removeLockfiles(cli.input[0]).then(res => {
+  const log = console.log;
 
-if (res === null) {
-  log(logSymbols.info, chalk.blue('No lockfile found'));
-} else {
-  log(logSymbols.success, chalk.green('Removed: ') + res);
-}
+  if (res === null) {
+    log(logSymbols.info, chalk.blue('No lockfile found'));
+  } else {
+    log(logSymbols.success, chalk.green('Removed: ') + res);
+  }
+});
