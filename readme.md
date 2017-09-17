@@ -86,9 +86,9 @@ remove-lockfiles
 
 ## Related
 
+- [del-nm-cli](https://github.com/luftywiranda13/del-nm-cli) － Delete `node_modules` and lockfile 
 - [husky](https://github.com/typicode/husky) － Git hooks made easy
 - [pre-commit](https://github.com/observing/pre-commit) － Automatically install pre-commit hooks for your npm modules
-- [shelljs](https://github.com/shelljs/shelljs) － Cross-platform Unix shell commands for Node.js
 - [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
 - [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Check which lockfile is present in the working directory
 
