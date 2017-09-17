@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^4.4.0",
+    "async-to-gen": "^1.3.3",
     "husky": "^0.14.3",
     "jest": "^21.1.0",
     "shelljs": "^0.7.8",
@@ -40,7 +41,10 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.js$": "async-to-gen"
+    }
   },
   "xo": {
     "space": true,
