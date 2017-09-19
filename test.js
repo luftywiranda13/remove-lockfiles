@@ -8,41 +8,49 @@ const removeLockfiles = require('./');
 describe('CWD', () => {
   test('removes package-lock.json', async () => {
     shell.touch('package-lock.json');
-    await removeLockfiles();
+    const res = await removeLockfiles();
 
-    expect(hasLockfile()).toBe(null);
+    expect(hasLockfile()).toEqual([]);
+    expect(res).toEqual(['package-lock.json']);
   });
 
   test('removes yarn.lock', async () => {
     shell.touch('yarn.lock');
-    await removeLockfiles();
+    const res = await removeLockfiles();
 
-    expect(hasLockfile()).toBe(null);
+    expect(hasLockfile()).toEqual([]);
+    expect(res).toEqual(['yarn.lock']);
   });
 
   test('do nothing', async () => {
-    await removeLockfiles();
-    expect(hasLockfile()).toBe(null);
+    const res = await removeLockfiles();
+
+    expect(hasLockfile()).toEqual([]);
+    expect(res).toEqual([]);
   });
 });
 
 describe('outside CWD', () => {
   test('removes package-lock.json', async () => {
     shell.touch('../package-lock.json');
-    await removeLockfiles('../');
+    const res = await removeLockfiles('../');
 
-    expect(hasLockfile('../')).toBe(null);
+    expect(hasLockfile('../')).toEqual([]);
+    expect(res).toEqual(['package-lock.json']);
   });
 
   test('removes yarn.lock', async () => {
     shell.touch('../yarn.lock');
-    await removeLockfiles('../');
+    const res = await removeLockfiles('../');
 
-    expect(hasLockfile('../')).toBe(null);
+    expect(hasLockfile('../')).toEqual([]);
+    expect(res).toEqual(['yarn.lock']);
   });
 
   test('do nothing', async () => {
-    await removeLockfiles('../');
-    expect(hasLockfile('../')).toBe(null);
+    const res = await removeLockfiles('../');
+
+    expect(hasLockfile('../')).toEqual([]);
+    expect(res).toEqual([]);
   });
 });

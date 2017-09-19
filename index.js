@@ -7,13 +7,16 @@ const hasLockfile = require('has-lockfile');
 module.exports = cwd => {
   cwd = cwd || process.cwd();
 
-  const lockfile = hasLockfile(cwd);
+  const lockfiles = hasLockfile(cwd);
 
-  if (lockfile !== null) {
-    return execa('git', ['rm', '-f', lockfile], {cwd, reject: false})
-      .then(() => del(lockfile, {cwd}))
-      .then(() => lockfile);
+  if (lockfiles.length !== 0) {
+    return execa('git', ['rm', '-f', lockfiles.join(' ')], {
+      cwd,
+      reject: false
+    })
+      .then(() => del(lockfiles, {cwd}))
+      .then(() => lockfiles);
   }
 
-  return Promise.resolve(lockfile);
+  return Promise.resolve(lockfiles);
 };
