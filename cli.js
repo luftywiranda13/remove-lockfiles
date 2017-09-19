@@ -20,9 +20,9 @@ const cli = meow(`
 removeLockfiles(cli.input[0]).then(res => {
   const log = console.log;
 
-  if (res === null) {
+  if (res.length === 0) {
     log(logSymbols.info, chalk.blue('No lockfile found'));
   } else {
-    log(logSymbols.success, chalk.green('Removed: ') + res);
+    log(logSymbols.success, chalk.green('Removed: ') + res.join(' & '));
   }
 });
