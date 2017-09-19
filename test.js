@@ -22,6 +22,15 @@ describe('CWD', () => {
     expect(res).toEqual(['yarn.lock']);
   });
 
+  test('removes all lockfiles', async () => {
+    shell.touch('package-lock.json');
+    shell.touch('yarn.lock');
+    const res = await removeLockfiles();
+
+    expect(hasLockfile()).toEqual([]);
+    expect(res).toEqual(['package-lock.json', 'yarn.lock']);
+  });
+
   test('do nothing', async () => {
     const res = await removeLockfiles();
 
@@ -45,6 +54,15 @@ describe('outside CWD', () => {
 
     expect(hasLockfile('../')).toEqual([]);
     expect(res).toEqual(['yarn.lock']);
+  });
+
+  test('removes all lockfiles', async () => {
+    shell.touch('../package-lock.json');
+    shell.touch('../yarn.lock');
+    const res = await removeLockfiles('../');
+
+    expect(hasLockfile()).toEqual([]);
+    expect(res).toEqual(['package-lock.json', 'yarn.lock']);
   });
 
   test('do nothing', async () => {
