@@ -6,7 +6,7 @@ const shell = require('shelljs');
 const removeLockfiles = require('./');
 
 describe('CWD', () => {
-  test('removes package-lock.json', async () => {
+  it('removes package-lock.json', async () => {
     shell.touch('package-lock.json');
     const res = await removeLockfiles();
 
@@ -14,7 +14,7 @@ describe('CWD', () => {
     expect(res).toEqual(['package-lock.json']);
   });
 
-  test('removes yarn.lock', async () => {
+  it('removes yarn.lock', async () => {
     shell.touch('yarn.lock');
     const res = await removeLockfiles();
 
@@ -22,7 +22,7 @@ describe('CWD', () => {
     expect(res).toEqual(['yarn.lock']);
   });
 
-  test('removes all lockfiles', async () => {
+  it('removes all lockfiles', async () => {
     shell.touch('package-lock.json');
     shell.touch('yarn.lock');
     const res = await removeLockfiles();
@@ -31,7 +31,7 @@ describe('CWD', () => {
     expect(res).toEqual(['package-lock.json', 'yarn.lock']);
   });
 
-  test('do nothing', async () => {
+  it('does nothing', async () => {
     const res = await removeLockfiles();
 
     expect(hasLockfile()).toEqual([]);
@@ -40,7 +40,7 @@ describe('CWD', () => {
 });
 
 describe('outside CWD', () => {
-  test('removes package-lock.json', async () => {
+  it('removes package-lock.json', async () => {
     shell.touch('../package-lock.json');
     const res = await removeLockfiles('../');
 
@@ -48,7 +48,7 @@ describe('outside CWD', () => {
     expect(res).toEqual(['package-lock.json']);
   });
 
-  test('removes yarn.lock', async () => {
+  it('removes yarn.lock', async () => {
     shell.touch('../yarn.lock');
     const res = await removeLockfiles('../');
 
@@ -56,7 +56,7 @@ describe('outside CWD', () => {
     expect(res).toEqual(['yarn.lock']);
   });
 
-  test('removes all lockfiles', async () => {
+  it('removes all lockfiles', async () => {
     shell.touch('../package-lock.json');
     shell.touch('../yarn.lock');
     const res = await removeLockfiles('../');
@@ -65,7 +65,7 @@ describe('outside CWD', () => {
     expect(res).toEqual(['package-lock.json', 'yarn.lock']);
   });
 
-  test('do nothing', async () => {
+  it('does nothing', async () => {
     const res = await removeLockfiles('../');
 
     expect(hasLockfile('../')).toEqual([]);
