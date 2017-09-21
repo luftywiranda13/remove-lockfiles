@@ -28,9 +28,7 @@ npm install remove-lockfiles --save-dev
 
 ### Pre-commit hook
 
-#### With [husky](https://github.com/typicode/husky)
-
-Install `husky`:
+Install [husky](https://github.com/typicode/husky):
 
 ```sh
 npm install husky --save-dev
@@ -46,31 +44,11 @@ Edit `package.json` to include this configuration:
 }
 ```
 
-#### With [pre-commit](https://github.com/observing/pre-commit)
+Looking for alternative to `husky`? We can also use `remove-lockfiles` with [pre-commit](https://github.com/observing/pre-commit).
 
-Install `pre-commit`:
+### Standalone CLI
 
-```sh
-npm install pre-commit --save-dev
-```
-
-Edit `package.json` to include this configuration:
-
-```js
-{
-  "scripts": {
-    "remove-lockfiles": "remove-lockfiles",
-  },
-  "pre-commit": [
-    "remove-lockfiles",
-    // other tasks
-  ]
-}
-```
-
-### Standalone script
-
-Please note that if we use `remove-lockfiles` as a standalone script, it will just unstage and remove the lockfiles but can't prevent them to be committed.
+Please note that using `remove-lockfiles` as a standalone script will only unstage and remove the lockfiles, it won't prevent them to be committed.
 
 Install `remove-lockfiles` globally:
 
@@ -95,8 +73,6 @@ $ remove-lockfiles --help
 ## Related
 
 - [del-nm-cli](https://github.com/luftywiranda13/del-nm-cli) － Delete `node_modules` and lockfile 
-- [husky](https://github.com/typicode/husky) － Git hooks made easy
-- [pre-commit](https://github.com/observing/pre-commit) － Automatically install pre-commit hooks for your npm modules
 - [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
 - [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Check which lockfile is present in the working directory
 
