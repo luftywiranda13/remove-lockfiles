@@ -8,7 +8,7 @@
 
 Prevent committing lockfiles
 
-## Why?
+## Why
 
 - [Lockfiles are for apps, not for libraries/packages](https://github.com/sindresorhus/ama/issues/479#issuecomment-310661514)
 - [Listing lockfiles in .gitignore is considered a bad approach](https://github.com/facebookincubator/create-react-app/pull/2014#issuecomment-300811661)
@@ -58,7 +58,7 @@ npm install remove-lockfiles --global
 
 Run the script:
 
-```
+```sh
 $ remove-lockfiles --help
 
   Usage
