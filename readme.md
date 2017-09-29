@@ -73,7 +73,7 @@ $ remove-lockfiles --help
 ## Related
 
 - [del-nm-cli](https://github.com/luftywiranda13/del-nm-cli) － Delete `node_modules` and lockfiles
-- [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Check lockfiles in the working directory
+- [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Detect lockfiles in the working directory
 - [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
 
 ## Contributors
