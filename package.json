@@ -30,7 +30,7 @@
     "execa": "^0.8.0",
     "has-lockfile": "^2.0.0",
     "log-symbols": "^2.1.0",
-    "meow": "^3.7.0"
+    "meow": "^4.0.0"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.9.1",
