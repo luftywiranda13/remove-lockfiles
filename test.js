@@ -7,6 +7,7 @@ const removeLockfiles = require('./');
 
 describe('CWD', () => {
   it('removes package-lock.json', async () => {
+    expect.assertions(2);
     shell.touch('package-lock.json');
 
     const res = await removeLockfiles();
@@ -16,6 +17,7 @@ describe('CWD', () => {
   });
 
   it('removes yarn.lock', async () => {
+    expect.assertions(2);
     shell.touch('yarn.lock');
 
     const res = await removeLockfiles();
@@ -25,6 +27,7 @@ describe('CWD', () => {
   });
 
   it('removes all lockfiles', async () => {
+    expect.assertions(2);
     shell.touch(['package-lock.json', 'yarn.lock']);
 
     const res = await removeLockfiles();
@@ -34,6 +37,8 @@ describe('CWD', () => {
   });
 
   it('does nothing', async () => {
+    expect.assertions(2);
+
     const res = await removeLockfiles();
 
     expect(res).toEqual([]);
@@ -43,6 +48,7 @@ describe('CWD', () => {
 
 describe('outside CWD', () => {
   it('removes package-lock.json', async () => {
+    expect.assertions(2);
     shell.touch('../package-lock.json');
 
     const res = await removeLockfiles('../');
@@ -52,6 +58,7 @@ describe('outside CWD', () => {
   });
 
   it('removes yarn.lock', async () => {
+    expect.assertions(2);
     shell.touch('../yarn.lock');
 
     const res = await removeLockfiles('../');
@@ -61,6 +68,7 @@ describe('outside CWD', () => {
   });
 
   it('removes all lockfiles', async () => {
+    expect.assertions(2);
     shell.touch(['../package-lock.json', '../yarn.lock']);
 
     const res = await removeLockfiles('../');
@@ -70,6 +78,8 @@ describe('outside CWD', () => {
   });
 
   it('does nothing', async () => {
+    expect.assertions(2);
+
     const res = await removeLockfiles('../');
 
     expect(res).toEqual([]);
