@@ -2,7 +2,7 @@
 
 Contributions are always welcome, no matter how large or small.
 
-**Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
+**Working on your first Pull Request?** You can learn how from this _free_ series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
 ## Code of Conduct
 
@@ -33,8 +33,7 @@ npm test
 
 ## Committing and Pushing changes
 
-> This project uses [semantic-release](https://npmjs.com/package/semantic-release) to do automatic releases and generate a changelog based on the
-commit history. So we follow [a convention](https://github.com/conventional-changelog/conventional-changelog-angular/blob/ed32559941719a130bb0327f886d6a32a8cbc2ba/convention.md) for commit messages. You don‘t have to follow this convention if you don‘t like to. Just know that when we merge your commit, we‘ll probably use “Squash and Merge” so we can change the commit message.
+> This project uses [semantic-release](https://npmjs.com/package/semantic-release) to do automatic releases and generate a changelog based on the commit history. So we follow [a convention](https://github.com/conventional-changelog/conventional-changelog-angular/blob/ed32559941719a130bb0327f886d6a32a8cbc2ba/convention.md) for commit messages. You don‘t have to follow this convention if you don‘t like to. Just know that when we merge your commit, we‘ll probably use “Squash and Merge” so we can change the commit message.
 
 Create a branch and start hacking:
 
@@ -54,16 +53,13 @@ Open this project on [GitHub](https://github.com/luftywiranda13/remove-lockfiles
 
 ## Add yourself as a contributor
 
-> This project follows the [all contributors](https://github.com/kentcdodds/all-contributors) specification. To add yourself to the table of
-contributors on the [`readme.md`](./readme.md), please use the automated script as part of your PR:
+> This project follows the [all contributors](https://github.com/kentcdodds/all-contributors) specification. To add yourself to the table of contributors on the [`readme.md`](./readme.md), please use the automated script as part of your PR:
 
 ```sh
 npm run contributors:add
 ```
 
-> Follow the prompt. If you‘ve already added yourself to the list and are making a
-new type of contribution, you can run it again and select the added contribution
-type.
+> Follow the prompt. If you‘ve already added yourself to the list and are making a new type of contribution, you can run it again and select the added contribution type.
 
 ## Help needed
 

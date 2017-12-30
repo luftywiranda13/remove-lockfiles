@@ -7,17 +7,19 @@
   "author": {
     "name": "Lufty Wiranda",
     "email": "lufty.wiranda@gmail.com",
-    "url": "https://www.instagram.com/luftywiranda13"
+    "url": "https://www.luftywiranda.com"
   },
   "engines": {
     "node": ">=4"
   },
   "scripts": {
+    "precommit": "node cli.js && xo --fix && lint-staged",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "precommit": "node cli.js && xo --fix",
+    "lint": "xo",
     "pretest": "node cli.js",
-    "test": "xo && jest"
+    "test": "jest --runInBand --coverage",
+    "test:watch": "jest --runInBand --watch"
   },
   "bin": "cli.js",
   "files": [
@@ -35,20 +37,36 @@
   "devDependencies": {
     "all-contributors-cli": "^4.10.0",
     "async-to-gen": "^1.3.3",
+    "eslint-config-prettier": "^2.9.0",
+    "fs-extra": "^5.0.0",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
-    "shelljs": "^0.7.8",
+    "jest": "^22.0.4",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2",
     "xo": "^0.18.2"
   },
   "jest": {
     "testEnvironment": "node",
-    "collectCoverage": true,
     "transform": {
       "^.+\\.js$": "async-to-gen"
     }
   },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
   "xo": {
-    "space": true,
+    "extends": "prettier",
     "envs": [
       "jest"
     ]

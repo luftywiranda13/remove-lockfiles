@@ -9,7 +9,7 @@ const removeLockfiles = require('./');
 
 const cli = meow(`
   Usage
-    $ remove-lockfiles <path>
+    $ remove-lockfiles [path]
 
   Examples
     $ remove-lockfiles
@@ -20,9 +20,9 @@ const cli = meow(`
 removeLockfiles(cli.input[0]).then(res => {
   const log = console.log;
 
-  if (res.length === 0) {
-    log(logSymbols.info, chalk.blue('No lockfile found'));
-  } else {
+  if (res.length > 0) {
     log(logSymbols.success, chalk.green('Removed: ') + res.join(' & '));
+  } else {
+    log(logSymbols.info, chalk.blue('No lockfile found'));
   }
 });
