@@ -12,9 +12,9 @@ module.exports = cwd => {
   if (lockfiles.length !== 0) {
     return execa('git', ['rm', '-f', lockfiles.join(' ')], {
       cwd,
-      reject: false
+      reject: false,
     })
-      .then(() => del(lockfiles, {cwd}))
+      .then(() => del(lockfiles, { cwd }))
       .then(() => lockfiles);
   }
 
