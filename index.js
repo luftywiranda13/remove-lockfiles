@@ -4,7 +4,7 @@ const del = require('del');
 const execa = require('execa');
 const hasLockfile = require('has-lockfile');
 
-module.exports = cwd => {
+const removeLockfiles = cwd => {
   cwd = cwd || process.cwd();
 
   const lockfiles = hasLockfile(cwd);
@@ -20,3 +20,5 @@ module.exports = cwd => {
 
   return Promise.resolve(lockfiles);
 };
+
+module.exports = removeLockfiles;
