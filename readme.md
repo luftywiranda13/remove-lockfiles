@@ -26,55 +26,30 @@ npm install --save-dev remove-lockfiles
 
 ## Usage
 
-### Pre-commit hook
-
-Install [husky](https://github.com/typicode/husky):
-
-```sh
-npm install husky --save-dev
-```
-
-Edit `package.json` to include this configuration:
-
 ```js
-{
-  "scripts": {
-    "precommit": "remove-lockfiles"
-  }
-}
+const removeLockfiles = require('remove-lockfiles');
+
+removeLockfiles().then(lockfiles => {
+  console.log('Removed:\n', lockfiles.join('\n'));
+});
 ```
 
-Looking for alternative to `husky`? We can also use `remove-lockfiles` with [pre-commit](https://github.com/observing/pre-commit).
+## API
 
-### Standalone CLI
+### removeLockfiles([path])
 
-Please note that using `remove-lockfiles` as a standalone script will only unstage and remove the lockfiles, it won't prevent them to be committed.
+Returns a promse of an array for deleted lockfiles
 
-Install `remove-lockfiles` globally:
+#### path
 
-```sh
-npm install remove-lockfiles --global
-```
-
-Run the script:
-
-```sh
-$ remove-lockfiles --help
-
-  Usage
-    $ remove-lockfiles <path>
-
-  Examples
-    $ remove-lockfiles
-    $ remove-lockfiles foo
-    $ remove-lockfiles ../bar
-```
+Type: `string`<br />
+Default: `process.cwd()`
 
 ## Related
 
+* [remove-lockfiles-cli](https://github.com/luftywiranda13/remove-lockfiles-cli) － CLI for this module
 * [del-nm-cli](https://github.com/luftywiranda13/del-nm-cli) － Delete `node_modules` and lockfiles
 * [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Detect lockfiles in the working directory
-* [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
 
 ## Contributors
 

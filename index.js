@@ -4,17 +4,17 @@ const del = require('del');
 const execa = require('execa');
 const hasLockfile = require('has-lockfile');
 
-const removeLockfiles = cwd => {
-  cwd = cwd || process.cwd();
+const removeLockfiles = path => {
+  path = path || process.cwd();
 
-  const lockfiles = hasLockfile(cwd);
+  const lockfiles = hasLockfile(path);
 
   if (lockfiles.length !== 0) {
     return execa('git', ['rm', '-f', lockfiles.join(' ')], {
-      cwd,
+      cwd: path,
       reject: false,
     })
-      .then(() => del(lockfiles, { cwd }))
+      .then(() => del(lockfiles, { cwd: path }))
       .then(() => lockfiles);
   }
 

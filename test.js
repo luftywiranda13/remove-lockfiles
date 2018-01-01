@@ -5,7 +5,7 @@ const shell = require('shelljs');
 
 const removeLockfiles = require('./');
 
-describe('CWD', () => {
+describe('default `path = process.cwd()`', () => {
   it('removes package-lock.json', async () => {
     expect.assertions(2);
     shell.touch('package-lock.json');
@@ -45,7 +45,7 @@ describe('CWD', () => {
   });
 });
 
-describe('outside CWD', () => {
+describe('user-defined `path`', () => {
   it('removes package-lock.json', async () => {
     expect.assertions(2);
     shell.touch('../package-lock.json');
