@@ -25,12 +25,9 @@
     "index.js"
   ],
   "dependencies": {
-    "chalk": "^2.3.0",
     "del": "^3.0.0",
     "execa": "^0.8.0",
-    "has-lockfile": "^2.0.0",
-    "log-symbols": "^2.1.0",
-    "meow": "^4.0.0"
+    "has-lockfile": "^2.0.0"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.0",
@@ -40,9 +37,9 @@
     "jest": "^22.0.4",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2",
+    "semantic-release": "^11.0.2",
     "shelljs": "^0.7.8",
-    "xo": "^0.18.2",
-    "semantic-release": "^11.0.2"
+    "xo": "^0.18.2"
   },
   "jest": {
     "testEnvironment": "node",
