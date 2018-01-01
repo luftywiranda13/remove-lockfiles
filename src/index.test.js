@@ -1,9 +1,7 @@
-'use strict';
+import hasLockfile from 'has-lockfile';
+import shell from 'shelljs';
 
-const hasLockfile = require('has-lockfile');
-const shell = require('shelljs');
-
-const removeLockfiles = require('./');
+import removeLockfiles from './';
 
 describe('default `path = process.cwd()`', () => {
   it('removes package-lock.json', async () => {

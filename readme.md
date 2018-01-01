@@ -21,7 +21,7 @@ Prevent committing lockfiles
 ## Installation
 
 ```sh
-npm install --save-dev remove-lockfiles
+npm install --save remove-lockfiles
 ```
 
 ## Usage
