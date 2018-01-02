@@ -13,8 +13,6 @@
     "node": ">=4"
   },
   "scripts": {
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate",
     "precommit": "xo --fix && lint-staged",
     "prebuild": "rimraf dist",
     "build": "babel src --out-dir dist --copy-files --ignore *.test.js",
@@ -34,7 +32,6 @@
     "has-lockfile": "^2.0.0"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.10.0",
     "babel-cli": "^6.26.0",
     "babel-jest": "^22.0.4",
     "babel-plugin-add-module-exports": "^0.2.1",
