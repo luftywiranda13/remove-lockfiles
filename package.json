@@ -13,13 +13,13 @@
     "node": ">=4"
   },
   "scripts": {
+    "precommit": "node cli.js && xo --fix && lint-staged",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "precommit": "node cli.js && xo --fix && lint-staged",
     "lint": "xo",
     "pretest": "node cli.js",
-    "test:watch": "jest --runInBand --watch",
     "test": "jest --runInBand --coverage",
+    "test:watch": "jest --runInBand --watch",
     "semantic-release": "semantic-release"
   },
   "bin": "cli.js",
