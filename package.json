@@ -18,8 +18,8 @@
     "precommit": "node cli.js && xo --fix && lint-staged",
     "lint": "xo",
     "pretest": "node cli.js",
-    "test:watch": "jest --watch",
-    "test": "jest --coverage",
+    "test:watch": "jest --runInBand --watch",
+    "test": "jest --runInBand --coverage",
     "semantic-release": "semantic-release"
   },
   "bin": "cli.js",
