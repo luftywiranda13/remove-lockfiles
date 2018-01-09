@@ -2,97 +2,35 @@
 
 const execa = require('execa');
 const fs = require('fs-extra');
+const tempy = require('tempy');
 
-describe('CWD', () => {
-  it('removes package-lock.json', async () => {
+describe('no lockfile', () => {
+  test('output', async () => {
     expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `package-lock.json`
-    );
+    const stdout = await execa.stdout('./cli.js');
 
-    const res = await execa.stdout('./cli.js');
-
-    expect(res).toMatch(/package-lock.json/);
-  });
-
-  it('removes yarn.lock', async () => {
-    expect.assertions(1);
-    await fs.copy(`${__dirname}/fixtures/_yarn.lock`, `yarn.lock`);
-
-    const res = await execa.stdout('./cli.js');
-
-    expect(res).toMatch(/yarn.lock/);
-  });
-
-  it('removes all lockfiles', async () => {
-    expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `package-lock.json`
-    );
-    await fs.copy(`${__dirname}/fixtures/_yarn.lock`, `yarn.lock`);
-
-    const res = await execa.stdout('./cli.js');
-
-    expect(res).toMatch(/package-lock.json & yarn.lock/);
-  });
-
-  it('does nothing', async () => {
-    expect.assertions(1);
-
-    const res = await execa.stdout('./cli.js');
-
-    expect(res).toMatch(/No lockfile found/);
+    expect(stdout).toMatch(/No lockfile found/);
   });
 });
 
-describe('outside CWD', () => {
-  it('removes package-lock.json', async () => {
+describe('with lockfiles', () => {
+  test('output', async () => {
     expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `${__dirname}/fixtures/package-lock.json`
-    );
+    const tempDir = tempy.directory();
+    await fs.copy(`${__dirname}/fixtures`, tempDir);
 
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
+    const stdout = await execa.stdout('./cli.js', [tempDir]);
 
-    expect(res).toMatch(/package-lock.json/);
+    expect(stdout).not.toMatch(/npm-shrinkwrap.json/);
   });
 
-  it('removes yarn.lock', async () => {
+  test('--shrinkwrap option', async () => {
     expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_yarn.lock`,
-      `${__dirname}/fixtures/yarn.lock`
-    );
+    const tempDir = tempy.directory();
+    await fs.copy(`${__dirname}/fixtures`, tempDir);
 
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
+    const stdout = await execa.stdout('./cli.js', [tempDir, '--shrinkwrap']);
 
-    expect(res).toMatch(/yarn.lock/);
-  });
-
-  it('removes all lockfiles', async () => {
-    expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `${__dirname}/fixtures/package-lock.json`
-    );
-    await fs.copy(
-      `${__dirname}/fixtures/_yarn.lock`,
-      `${__dirname}/fixtures/yarn.lock`
-    );
-
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
-
-    expect(res).toMatch(/package-lock.json & yarn.lock/);
-  });
-
-  it('does nothing', async () => {
-    expect.assertions(1);
-
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
-
-    expect(res).toMatch(/No lockfile found/);
+    expect(stdout).toMatch(/npm-shrinkwrap.json/);
   });
 });

@@ -46,7 +46,7 @@ Edit `package.json` to include this configuration:
 
 Looking for alternative to `husky`? We can also use `remove-lockfiles` with [pre-commit](https://github.com/observing/pre-commit).
 
-### Standalone CLI
+### CLI
 
 Please note that using `remove-lockfiles` as a standalone script will only unstage and remove the lockfiles, it won't prevent them to be committed.
 
@@ -62,13 +62,43 @@ Run the script:
 $ remove-lockfiles --help
 
   Usage
-    $ remove-lockfiles [path]
+    $ remove-lockfiles [path|options]
+
+  Options
+    --shrinkwrap    Remove `npm-shrinkwrap.json`
 
   Examples
     $ remove-lockfiles
     $ remove-lockfiles foo
     $ remove-lockfiles ../bar
+    $ remove-lockfiles --shrinkwrap
+    $ remove-lockfiles --shrinkwrap foo
+    $ remove-lockfiles --shrinkwrap ../bar
 ```
+
+### API
+
+#### removeLockfiles([options])
+
+Returns `Promise<string[]>` of deleted lockfiles.
+
+##### options
+
+Type: `Object`<br />
+
+###### cwd
+
+Type: `string`<br />
+Default: `process.cwd()`
+
+Current working directory.
+
+###### shrinkwrap
+
+Type: `boolean`<br />
+Default: `false`
+
+If `true`, `npm-shrinkwrap.json` will also be removed.
 
 ## Related
 
