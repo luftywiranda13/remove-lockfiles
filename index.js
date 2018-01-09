@@ -12,16 +12,18 @@ const forceGitRemove = (lockfiles, cwd) => {
   });
 };
 
-const removeLockfiles = (cwd = process.cwd()) => {
-  const lockfiles = hasLockfile(cwd);
+const removeLockfiles = ({ cwd = process.cwd(), shrinkwrap = false } = {}) => {
+  const tobeRemoved = hasLockfile(cwd).filter(lockfile => {
+    return shrinkwrap === false ? lockfile !== 'npm-shrinkwrap.json' : lockfile;
+  });
 
-  return lockfiles.length > 0
-    ? forceGitRemove(lockfiles, cwd)
-        .then(() => del(lockfiles, { cwd }))
+  return tobeRemoved.length > 0
+    ? forceGitRemove(tobeRemoved, cwd)
+        .then(() => del(tobeRemoved, { cwd }))
         .then(deletedPaths => {
           return deletedPaths.map(deletedPath => path.basename(deletedPath));
         })
-    : Promise.resolve(lockfiles);
+    : Promise.resolve(tobeRemoved);
 };
 
 module.exports = removeLockfiles;

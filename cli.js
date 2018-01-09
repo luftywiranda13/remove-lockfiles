@@ -11,18 +11,25 @@ const cli = meow(`
   Usage
     $ remove-lockfiles [path]
 
+  Options
+    --shrinkwrap    Remove \`npm-shrinkwrap.json\`
+
   Examples
     $ remove-lockfiles
     $ remove-lockfiles foo
     $ remove-lockfiles ../bar
+    $ remove-lockfiles --shrinkwrap
+    $ remove-lockfiles ../bar --shrinkwrap
 `);
 
-removeLockfiles(cli.input[0]).then(res => {
-  const log = console.log;
+removeLockfiles({ cwd: cli.input[0], shrinkwrap: cli.flags.shrinkwrap }).then(
+  res => {
+    const log = console.log;
 
-  if (res.length > 0) {
-    log(logSymbols.success, chalk.green('Removed: ') + res.join(' & '));
-  } else {
-    log(logSymbols.info, chalk.blue('No lockfile found'));
+    if (res.length > 0) {
+      log(logSymbols.success, chalk.green('Removed:\n') + res.join('\n'));
+    } else {
+      log(logSymbols.info, chalk.blue('No lockfile found'));
+    }
   }
-});
+);
