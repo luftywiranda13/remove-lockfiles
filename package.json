@@ -10,7 +10,7 @@
     "url": "https://www.luftywiranda.com"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
     "precommit": "node cli.js && xo --fix && lint-staged",
@@ -30,7 +30,7 @@
     "chalk": "^2.3.0",
     "del": "^3.0.0",
     "execa": "^0.8.0",
-    "has-lockfile": "^2.0.0",
+    "has-lockfile": "^3.0.0",
     "log-symbols": "^2.1.0",
     "meow": "^4.0.0"
   },
