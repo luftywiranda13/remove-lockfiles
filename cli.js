@@ -7,24 +7,39 @@ const meow = require('meow');
 
 const removeLockfiles = require('./');
 
-const cli = meow(`
+const cli = meow(
+  `
   Usage
-    $ remove-lockfiles [path]
+    $ remove-lockfiles [path|options]
+
+  Options
+    --shrinkwrap    Include \`npm-shrinkwrap.json\` in removal
 
   Examples
     $ remove-lockfiles
-    $ remove-lockfiles foo
-    $ remove-lockfiles ../bar
-`);
-
-removeLockfiles(cli.input[0]).then(res => {
-  const log = console.log;
-
-  if (res.length === 0) {
-    log(info, blue('No lockfile found'));
+    $ remove-lockfiles ../foo
+    $ remove-lockfiles --shrinkwrap
+    $ remove-lockfiles --shrinkwrap ../foo
+`,
+  {
+    flags: {
+      shrinkwrap: {
+        type: 'boolean',
+      },
+    },
   }
+);
 
-  if (res.length > 0) {
-    log(success, green('Removed:\n') + res.join('\n'));
+removeLockfiles({ cwd: cli.input[0], shrinkwrap: cli.flags.shrinkwrap }).then(
+  res => {
+    const log = console.log;
+
+    if (res.length === 0) {
+      log(info, blue('No lockfile found'));
+    }
+
+    if (res.length > 0) {
+      log(success, green('Removed:\n') + res.join('\n'));
+    }
   }
-});
+);
