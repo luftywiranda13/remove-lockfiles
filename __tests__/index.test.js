@@ -10,12 +10,13 @@ const fixtures = `${__dirname}/fixtures`;
 describe('API', () => {
   it('forces remove lockfiles', async () => {
     expect.assertions(4);
+
     const lockfiles = ['package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json'];
 
     // Rename lockfiles,
     // E.g: `_yarn.lock` => `yarn.lock`
-    lockfiles.forEach(lockfile => {
-      copySync(`${fixtures}/_${lockfile}`, `${fixtures}/${lockfile}`);
+    lockfiles.forEach(x => {
+      copySync(`${fixtures}/_${x}`, `${fixtures}/${x}`);
     });
 
     // Init a dummy repo then stage lockfiles
@@ -26,7 +27,7 @@ describe('API', () => {
 
     // Should not remove `npm-shrinkwrap.json` by default
     const expected = expect.arrayContaining(
-      lockfiles.filter(lockfile => lockfile !== 'npm-shrinkwrap.json')
+      lockfiles.filter(x => x !== 'npm-shrinkwrap.json')
     );
 
     expect(res).toEqual(expected);
@@ -40,6 +41,7 @@ describe('API', () => {
 
   it('can remove `npm-shrinkwrap.json`', async () => {
     expect.assertions(2);
+
     copySync(
       `${fixtures}/_npm-shrinkwrap.json`,
       `${fixtures}/npm-shrinkwrap.json`
@@ -53,6 +55,7 @@ describe('API', () => {
 
   it('returns empty array when no lockfile found', async () => {
     expect.assertions(3);
+
     const res = await removeLockfiles();
 
     expect(res).toEqual([]);

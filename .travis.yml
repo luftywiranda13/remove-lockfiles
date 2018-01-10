@@ -6,6 +6,7 @@ node_js:
   - '6'
 script:
   - npm run lint
+  - node node_modules/.bin/prettier -l "*.{js,json,md}"
   - npm run test
 after_success:
   - if [[ `npm -v` > 4* ]]; then npx codecov; fi

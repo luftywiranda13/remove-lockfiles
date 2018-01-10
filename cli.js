@@ -30,16 +30,17 @@ const cli = meow(
   }
 );
 
-removeLockfiles({ cwd: cli.input[0], shrinkwrap: cli.flags.shrinkwrap }).then(
-  res => {
-    const log = console.log;
+removeLockfiles({
+  cwd: cli.input[0],
+  shrinkwrap: cli.flags.shrinkwrap,
+}).then(res => {
+  const log = console.log;
 
-    if (res.length === 0) {
-      log(info, blue('No lockfile found'));
-    }
-
-    if (res.length > 0) {
-      log(success, green('Removed:\n') + res.join('\n'));
-    }
+  if (res.length === 0) {
+    log(info, blue('No lockfile found'));
   }
-);
+
+  if (res.length > 0) {
+    log(success, green('Removed:\n') + res.join('\n'));
+  }
+});

@@ -4,17 +4,18 @@ const { existsSync, copySync } = require('fs-extra');
 const { stdout } = require('execa');
 const tempy = require('tempy');
 
+const fixtures = `${__dirname}/fixtures`;
+const tempDir = tempy.directory();
+
 describe('CLI', async () => {
   test('lockfiles found', async () => {
     expect.assertions(4);
 
-    const fixtures = `${__dirname}/fixtures`;
-    const tempDir = tempy.directory();
+    const lockfiles = ['package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json'];
 
     // Copy lockfiles to tempDir
-    const lockfiles = ['package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json'];
-    lockfiles.forEach(lockfile => {
-      copySync(`${fixtures}/_${lockfile}`, `${tempDir}/${lockfile}`);
+    lockfiles.forEach(x => {
+      copySync(`${fixtures}/_${x}`, `${tempDir}/${x}`);
     });
 
     const res = await stdout('./cli.js', [tempDir]);
@@ -27,9 +28,6 @@ describe('CLI', async () => {
 
   test('`--shrinkwrap` flag', async () => {
     expect.assertions(2);
-
-    const fixtures = `${__dirname}/fixtures`;
-    const tempDir = tempy.directory();
 
     copySync(
       `${fixtures}/_npm-shrinkwrap.json`,
