@@ -1,98 +1,30 @@
 'use strict';
 
-const execa = require('execa');
-const fs = require('fs-extra');
+const { existsSync, copySync } = require('fs-extra');
+const { stdout } = require('execa');
+const tempy = require('tempy');
 
-describe('CWD', () => {
-  it('removes package-lock.json', async () => {
-    expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `package-lock.json`
-    );
+describe('CLI', async () => {
+  test('lockfiles found', async () => {
+    expect.assertions(3);
+    const fixtures = `${__dirname}/fixtures`;
+    const tempDir = tempy.directory();
+    copySync(`${fixtures}/_package-lock.json`, `${tempDir}/package-lock.json`);
+    copySync(`${fixtures}/_yarn.lock`, `${tempDir}/yarn.lock`);
 
-    const res = await execa.stdout('./cli.js');
+    const res = await stdout('./cli.js', [tempDir]);
 
-    expect(res).toMatch(/package-lock.json/);
+    expect(res).toMatchSnapshot();
+    expect(existsSync(`${tempDir}/package-lock.json`)).toBe(false);
+    expect(existsSync(`${tempDir}/yarn.lock`)).toBe(false);
   });
 
-  it('removes yarn.lock', async () => {
-    expect.assertions(1);
-    await fs.copy(`${__dirname}/fixtures/_yarn.lock`, `yarn.lock`);
+  test('no lockfile', async () => {
+    expect.assertions(3);
+    const res = await stdout('./cli.js');
 
-    const res = await execa.stdout('./cli.js');
-
-    expect(res).toMatch(/yarn.lock/);
-  });
-
-  it('removes all lockfiles', async () => {
-    expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `package-lock.json`
-    );
-    await fs.copy(`${__dirname}/fixtures/_yarn.lock`, `yarn.lock`);
-
-    const res = await execa.stdout('./cli.js');
-
-    expect(res).toMatch(/package-lock.json & yarn.lock/);
-  });
-
-  it('does nothing', async () => {
-    expect.assertions(1);
-
-    const res = await execa.stdout('./cli.js');
-
-    expect(res).toMatch(/No lockfile found/);
-  });
-});
-
-describe('outside CWD', () => {
-  it('removes package-lock.json', async () => {
-    expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `${__dirname}/fixtures/package-lock.json`
-    );
-
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
-
-    expect(res).toMatch(/package-lock.json/);
-  });
-
-  it('removes yarn.lock', async () => {
-    expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_yarn.lock`,
-      `${__dirname}/fixtures/yarn.lock`
-    );
-
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
-
-    expect(res).toMatch(/yarn.lock/);
-  });
-
-  it('removes all lockfiles', async () => {
-    expect.assertions(1);
-    await fs.copy(
-      `${__dirname}/fixtures/_package-lock.json`,
-      `${__dirname}/fixtures/package-lock.json`
-    );
-    await fs.copy(
-      `${__dirname}/fixtures/_yarn.lock`,
-      `${__dirname}/fixtures/yarn.lock`
-    );
-
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
-
-    expect(res).toMatch(/package-lock.json & yarn.lock/);
-  });
-
-  it('does nothing', async () => {
-    expect.assertions(1);
-
-    const res = await execa.stdout('./cli.js', [`${__dirname}/fixtures`]);
-
-    expect(res).toMatch(/No lockfile found/);
+    expect(res).toMatchSnapshot();
+    expect(existsSync('package-lock.json')).toBe(false);
+    expect(existsSync('yarn.lock')).toBe(false);
   });
 });

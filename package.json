@@ -18,8 +18,8 @@
     "contributors:generate": "all-contributors generate",
     "lint": "xo",
     "pretest": "node cli.js",
-    "test": "jest --runInBand --coverage",
-    "test:watch": "jest --runInBand --watch"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "bin": "cli.js",
   "files": [
@@ -43,13 +43,17 @@
     "jest": "^22.0.4",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2",
+    "tempy": "^0.2.1",
     "xo": "^0.18.2"
   },
   "jest": {
     "testEnvironment": "node",
     "transform": {
       "^.+\\.js$": "async-to-gen"
-    }
+    },
+    "watchPathIgnorePatterns": [
+      "<rootDir>/__tests__/fixtures/"
+    ]
   },
   "lint-staged": {
     "*.js": [
