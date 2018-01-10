@@ -1,33 +1,62 @@
 'use strict';
 
-const { copySync, existsSync } = require('fs-extra');
+const { copySync, existsSync, removeSync } = require('fs-extra');
 const execa = require('execa');
 
 const removeLockfiles = require('../');
 
-it('forces remove lockfiles', async () => {
-  expect.assertions(3);
-  const fixtures = `${__dirname}/fixtures`;
-  copySync(`${fixtures}/_package-lock.json`, `${fixtures}/package-lock.json`);
-  copySync(`${fixtures}/_yarn.lock`, `${fixtures}/yarn.lock`);
-  await execa('git', ['init'], { cwd: fixtures });
-  await execa('git', ['add', 'package-lock.json', 'yarn.lock'], {
-    cwd: fixtures,
+const fixtures = `${__dirname}/fixtures`;
+
+describe('API', () => {
+  it('forces remove lockfiles', async () => {
+    expect.assertions(4);
+    const lockfiles = ['package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json'];
+
+    // Rename lockfiles,
+    // E.g: `_yarn.lock` => `yarn.lock`
+    lockfiles.forEach(lockfile => {
+      copySync(`${fixtures}/_${lockfile}`, `${fixtures}/${lockfile}`);
+    });
+
+    // Init a dummy repo then stage lockfiles
+    await execa('git', ['init'], { cwd: fixtures });
+    await execa('git', ['add'].concat(lockfiles), { cwd: fixtures });
+
+    const res = await removeLockfiles({ cwd: fixtures });
+
+    // Should not remove `npm-shrinkwrap.json` by default
+    const expected = expect.arrayContaining(
+      lockfiles.filter(lockfile => lockfile !== 'npm-shrinkwrap.json')
+    );
+
+    expect(res).toEqual(expected);
+    expect(existsSync(`${fixtures}/npm-shrinkwrap.json`)).toBe(true);
+    expect(existsSync(`${fixtures}/package-lock.json`)).toBe(false);
+    expect(existsSync(`${fixtures}/yarn.lock`)).toBe(false);
+
+    // Remove dummy repo
+    removeSync(`${fixtures}/.git`);
   });
 
-  const res = await removeLockfiles(fixtures);
+  it('can remove `npm-shrinkwrap.json`', async () => {
+    expect.assertions(2);
+    copySync(
+      `${fixtures}/_npm-shrinkwrap.json`,
+      `${fixtures}/npm-shrinkwrap.json`
+    );
 
-  const expected = expect.arrayContaining(['yarn.lock', 'package-lock.json']);
-  expect(res).toEqual(expected);
-  expect(existsSync(`${fixtures}/package-lock.json`)).toBe(false);
-  expect(existsSync(`${fixtures}/yarn.lock`)).toBe(false);
-});
+    const res = await removeLockfiles({ cwd: fixtures, shrinkwrap: true });
 
-it('returns empty array when no lockfile found', async () => {
-  expect.assertions(3);
-  const res = await removeLockfiles();
+    expect(res).toEqual(['npm-shrinkwrap.json']);
+    expect(existsSync(`${fixtures}/npm-shrinkwrap.json`)).toBe(false);
+  });
 
-  expect(res).toEqual([]);
-  expect(existsSync('package-lock.json')).toBe(false);
-  expect(existsSync('yarn.lock')).toBe(false);
+  it('returns empty array when no lockfile found', async () => {
+    expect.assertions(3);
+    const res = await removeLockfiles();
+
+    expect(res).toEqual([]);
+    expect(existsSync('package-lock.json')).toBe(false);
+    expect(existsSync('yarn.lock')).toBe(false);
+  });
 });

@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CLI \`--shrinkwrap\` flag 1`] = `
+"✔ Removed:
+npm-shrinkwrap.json"
+`;
+
 exports[`CLI lockfiles found 1`] = `
 "✔ Removed:
 package-lock.json

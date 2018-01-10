@@ -62,12 +62,16 @@ Run the script:
 $ remove-lockfiles --help
 
   Usage
-    $ remove-lockfiles [path]
+    $ remove-lockfiles [path|options]
+
+  Options
+    --shrinkwrap    Include `npm-shrinkwrap.json` in removal
 
   Examples
     $ remove-lockfiles
-    $ remove-lockfiles foo
-    $ remove-lockfiles ../bar
+    $ remove-lockfiles ../foo
+    $ remove-lockfiles --shrinkwrap
+    $ remove-lockfiles --shrinkwrap ../foo
 ```
 
 ## Related
