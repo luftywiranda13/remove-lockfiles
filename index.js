@@ -13,8 +13,10 @@ const remove = (files, cwd) => {
     .then(() => files);
 };
 
-const removeLockfiles = (cwd = process.cwd()) => {
-  const lockfiles = hasLockfile(cwd);
+const removeLockfiles = ({ cwd = process.cwd(), shrinkwrap = false } = {}) => {
+  const lockfiles = shrinkwrap
+    ? hasLockfile(cwd)
+    : hasLockfile(cwd).filter(lockfile => lockfile !== 'npm-shrinkwrap.json');
 
   return lockfiles.length === 0
     ? Promise.resolve(lockfiles)
