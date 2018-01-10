@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
-const chalk = require('chalk');
-const logSymbols = require('log-symbols');
+const { blue, green } = require('chalk');
+const { info, success } = require('log-symbols');
 const meow = require('meow');
 
 const removeLockfiles = require('./');
@@ -20,9 +20,11 @@ const cli = meow(`
 removeLockfiles(cli.input[0]).then(res => {
   const log = console.log;
 
+  if (res.length === 0) {
+    log(info, blue('No lockfile found'));
+  }
+
   if (res.length > 0) {
-    log(logSymbols.success, chalk.green('Removed: ') + res.join(' & '));
-  } else {
-    log(logSymbols.info, chalk.blue('No lockfile found'));
+    log(success, green('Removed:\n') + res.join('\n'));
   }
 });

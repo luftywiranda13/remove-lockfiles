@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLI lockfiles found 1`] = `
+"✔ Removed:
+package-lock.json
+yarn.lock"
+`;
+
+exports[`CLI no lockfile 1`] = `"ℹ No lockfile found"`;
