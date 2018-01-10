@@ -10,11 +10,10 @@ it('forces remove lockfiles', async () => {
   const fixtures = `${__dirname}/fixtures`;
   copySync(`${fixtures}/_package-lock.json`, `${fixtures}/package-lock.json`);
   copySync(`${fixtures}/_yarn.lock`, `${fixtures}/yarn.lock`);
-  await execa('git', [
-    'add',
-    `${fixtures}/package-lock.json`,
-    `${fixtures}/yarn.lock`,
-  ]);
+  await execa('git', ['init'], { cwd: fixtures });
+  await execa('git', ['add', 'package-lock.json', 'yarn.lock'], {
+    cwd: fixtures,
+  });
 
   const res = await removeLockfiles(fixtures);
 
