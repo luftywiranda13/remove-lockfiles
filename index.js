@@ -11,9 +11,7 @@ const forceGitRemove = (lockfiles, cwd) => {
   });
 };
 
-const removeLockfiles = cwd => {
-  cwd = cwd || process.cwd();
-
+const removeLockfiles = (cwd = process.cwd()) => {
   const lockfiles = hasLockfile(cwd);
 
   return lockfiles.length > 0
