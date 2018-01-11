@@ -1,7 +1,6 @@
 'use strict';
 
-const { copySync, existsSync, removeSync } = require('fs-extra');
-const execa = require('execa');
+const { copySync, existsSync } = require('fs-extra');
 
 const removeLockfiles = require('../');
 
@@ -19,24 +18,15 @@ describe('API', () => {
       copySync(`${fixtures}/_${x}`, `${fixtures}/${x}`);
     });
 
-    // Init a dummy repo then stage lockfiles
-    await execa('git', ['init'], { cwd: fixtures });
-    await execa('git', ['add'].concat(lockfiles), { cwd: fixtures });
-
     const res = await removeLockfiles({ cwd: fixtures });
 
     // Should not remove `npm-shrinkwrap.json` by default
-    const expected = expect.arrayContaining(
-      lockfiles.filter(x => x !== 'npm-shrinkwrap.json')
-    );
+    const expected = expect.arrayContaining(['package-lock.json', 'yarn.lock']);
 
     expect(res).toEqual(expected);
     expect(existsSync(`${fixtures}/npm-shrinkwrap.json`)).toBe(true);
     expect(existsSync(`${fixtures}/package-lock.json`)).toBe(false);
     expect(existsSync(`${fixtures}/yarn.lock`)).toBe(false);
-
-    // Remove dummy repo
-    removeSync(`${fixtures}/.git`);
   });
 
   it('can remove `npm-shrinkwrap.json`', async () => {
