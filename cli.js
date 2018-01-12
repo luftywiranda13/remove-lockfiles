@@ -39,11 +39,15 @@ removeLockfiles({
 }).then(res => {
   const log = console.log;
 
-  if (res.length === 0) {
-    log(info, blue('No lockfile found'));
-  }
-
-  if (res.length > 0) {
-    log(success, green('Removed:\n') + res.join('\n'));
+  switch (res.length) {
+    case 0:
+      log(info, blue('No lockfile found'));
+      break;
+    case 1:
+      log(success, green('Removed: ') + res);
+      break;
+    default:
+      log(success, green('Removed:\n') + res.join('\n'));
+      break;
   }
 });
