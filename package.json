@@ -31,7 +31,8 @@
     "force-del": "^1.0.0",
     "has-lockfile": "^3.0.0",
     "log-symbols": "^2.1.0",
-    "meow": "^4.0.0"
+    "meow": "^4.0.0",
+    "update-notifier": "^2.3.0"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.0",

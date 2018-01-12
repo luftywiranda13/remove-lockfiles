@@ -4,6 +4,7 @@
 const { blue, green } = require('chalk');
 const { info, success } = require('log-symbols');
 const meow = require('meow');
+const updateNotifier = require('update-notifier');
 
 const removeLockfiles = require('./');
 
@@ -29,6 +30,8 @@ const cli = meow(
     },
   }
 );
+
+updateNotifier({ pkg: cli.pkg }).notify();
 
 removeLockfiles({
   cwd: cli.input[0],
