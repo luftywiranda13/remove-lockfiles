@@ -14,8 +14,8 @@ describe('API', () => {
     process.chdir(tempDir);
 
     const expected = expect.arrayContaining([
-      expect.stringMatching('yarn.lock'),
-      expect.stringMatching('package-lock.json'),
+      expect.stringMatching(/yarn.lock$/),
+      expect.stringMatching(/package-lock.json$/),
     ]);
 
     const res = await removeLockfiles();
@@ -27,7 +27,7 @@ describe('API', () => {
   it('defaults to not remove `npm-shrinkwrap.json`', async () => {
     expect.assertions(1);
     const tempDir = f.copy('lockfiles');
-    const expected = expect.arrayContaining(['npm-shrinkwrap.json']);
+    const expected = expect.arrayContaining([/npm-shrinkwrap.json$/]);
 
     const res = await removeLockfiles({ cwd: tempDir });
 
@@ -40,7 +40,7 @@ describe('API', () => {
     const expected = expect.arrayContaining([
       expect.stringMatching(/yarn.lock$/),
       expect.stringMatching(/package-lock.json$/),
-      expect.stringMatching('npm-shrinkwrap.json'),
+      expect.stringMatching(/npm-shrinkwrap.json$/),
     ]);
 
     const res = await removeLockfiles({
