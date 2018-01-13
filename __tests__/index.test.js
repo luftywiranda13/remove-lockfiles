@@ -1,55 +1,55 @@
 'use strict';
 
-const { copySync, existsSync } = require('fs-extra');
+const fixtures = require('fixturez');
 
 const removeLockfiles = require('../');
 
-const fixtures = `${__dirname}/fixtures`;
+const f = fixtures(__dirname);
 
 describe('API', () => {
-  it('forces remove lockfiles', async () => {
-    expect.assertions(4);
+  it('defaults to run in cwd', async () => {
+    expect.assertions(1);
+    const tempDir = f.copy('lockfiles');
+    const cwd = process.cwd();
+    process.chdir(tempDir);
 
-    const lockfiles = ['package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json'];
-
-    // Rename lockfiles,
-    // E.g: `_yarn.lock` => `yarn.lock`
-    lockfiles.forEach(x => {
-      copySync(`${fixtures}/_${x}`, `${fixtures}/${x}`);
-    });
-
-    const res = await removeLockfiles({ cwd: fixtures });
-
-    // Should not remove `npm-shrinkwrap.json` by default
-    const expected = expect.arrayContaining(['package-lock.json', 'yarn.lock']);
-
-    expect(res).toEqual(expected);
-    expect(existsSync(`${fixtures}/npm-shrinkwrap.json`)).toBe(true);
-    expect(existsSync(`${fixtures}/package-lock.json`)).toBe(false);
-    expect(existsSync(`${fixtures}/yarn.lock`)).toBe(false);
-  });
-
-  it('can remove `npm-shrinkwrap.json`', async () => {
-    expect.assertions(2);
-
-    copySync(
-      `${fixtures}/_npm-shrinkwrap.json`,
-      `${fixtures}/npm-shrinkwrap.json`
-    );
-
-    const res = await removeLockfiles({ cwd: fixtures, shrinkwrap: true });
-
-    expect(res).toEqual(['npm-shrinkwrap.json']);
-    expect(existsSync(`${fixtures}/npm-shrinkwrap.json`)).toBe(false);
-  });
-
-  it('returns empty array when no lockfile found', async () => {
-    expect.assertions(3);
+    const expected = expect.arrayContaining([
+      expect.stringMatching(/yarn.lock$/),
+      expect.stringMatching(/package-lock.json$/),
+    ]);
 
     const res = await removeLockfiles();
 
-    expect(res).toEqual([]);
-    expect(existsSync('package-lock.json')).toBe(false);
-    expect(existsSync('yarn.lock')).toBe(false);
+    expect(res).toEqual(expected);
+    process.chdir(cwd);
+  });
+
+  it('defaults to not remove `npm-shrinkwrap.json`', async () => {
+    expect.assertions(1);
+    const tempDir = f.copy('lockfiles');
+    const expected = expect.arrayContaining([
+      expect.stringMatching(/npm-shrinkwrap.json$/),
+    ]);
+
+    const res = await removeLockfiles({ cwd: tempDir });
+
+    expect(res).not.toEqual(expected);
+  });
+
+  it('can be set to remove `npm-shrinkwrap.json`', async () => {
+    expect.assertions(1);
+    const tempDir = f.copy('lockfiles');
+    const expected = expect.arrayContaining([
+      expect.stringMatching(/yarn.lock$/),
+      expect.stringMatching(/package-lock.json$/),
+      expect.stringMatching(/npm-shrinkwrap.json$/),
+    ]);
+
+    const res = await removeLockfiles({
+      cwd: tempDir,
+      shrinkwrap: true,
+    });
+
+    expect(res).toEqual(expected);
   });
 });

@@ -1,21 +1,21 @@
 # remove-lockfiles
 
-[![Package Version](https://img.shields.io/npm/v/remove-lockfiles.svg)](https://www.npmjs.com/package/remove-lockfiles)
-[![Build Status: Linux](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
-[![Build Status: Windows](https://ci.appveyor.com/api/projects/status/rx84a6lgs5eb3h0m/branch/master?svg=true)](https://ci.appveyor.com/project/luftywiranda13/remove-lockfiles/branch/master)
-[![Coverage Status](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg)](https://codecov.io/gh/luftywiranda13/remove-lockfiles)
-[![Downloads Status](https://img.shields.io/npm/dm/remove-lockfiles.svg)](https://npm-stat.com/charts.html?package=remove-lockfiles&from=2016-04-01)
+> Prevent committing lockfiles
 
-Prevent committing lockfiles
+[![Package Version](https://img.shields.io/npm/v/remove-lockfiles.svg?style=flat-square)](https://www.npmjs.com/package/remove-lockfiles)
+[![Downloads Status](https://img.shields.io/npm/dm/remove-lockfiles.svg?style=flat-square)](https://npm-stat.com/charts.html?package=remove-lockfiles&from=2016-04-01)
+[![Build Status: Linux](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
+[![Build Status: Windows](https://img.shields.io/appveyor/ci/luftywiranda13/remove-lockfiles/master.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/luftywiranda13/remove-lockfiles/branch/master)
+[![Coverage Status](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg?style=flat-square)](https://codecov.io/gh/luftywiranda13/remove-lockfiles)
 
 ## Why
 
 * [Lockfiles are for apps, not for libraries/packages](https://github.com/sindresorhus/ama/issues/479#issuecomment-310661514)
 * [Listing lockfiles in .gitignore is considered a bad approach](https://github.com/facebookincubator/create-react-app/pull/2014#issuecomment-300811661)
 * _[Unstaging only](https://github.com/facebookincubator/create-react-app/pull/2700)_ will introduce new problems
-* Not only unstage, but also remove any lockfiles
-* No need to worry whether contributors are using `npm` or `yarn`
-* If we specify `package-lock=false` in `.npmrc`, then what about in `.yarnrc`?
+* Uses [force-del](https://github.com/luftywiranda13/force-del) to get rid of lockfiles
+* No need to force contributors to use `npm` or `yarn`
+* No need to use 2 extra dot files (`.npmrc` and `.yarnrc`) to avoid generating lockfiles
 * Works on macOS, Linux, and Windows
 
 ## Installation
@@ -46,26 +46,24 @@ Edit `package.json` to include this configuration:
 
 Looking for alternative to `husky`? We can also use `remove-lockfiles` with [pre-commit](https://github.com/observing/pre-commit).
 
-### Standalone CLI
-
-Please note that using `remove-lockfiles` as a standalone script will only unstage and remove the lockfiles, it won't prevent them to be committed.
+### CLI
 
 Install `remove-lockfiles` globally:
 
 ```sh
-npm install remove-lockfiles --global
+npm install --global remove-lockfiles
 ```
 
 Run the script:
 
-```sh
+```
 $ remove-lockfiles --help
 
   Usage
     $ remove-lockfiles [path|options]
 
   Options
-    --shrinkwrap    Include `npm-shrinkwrap.json` in removal
+    --shrinkwrap  Remove `npm-shrinkwrap.json` if found
 
   Examples
     $ remove-lockfiles
@@ -77,8 +75,8 @@ $ remove-lockfiles --help
 ## Related
 
 * [del-nm-cli](https://github.com/luftywiranda13/del-nm-cli) － Delete `node_modules` and lockfiles
+* [force-del](https://github.com/luftywiranda13/force-del) － Force delete files or folders using glob patterns
 * [has-lockfile](https://github.com/luftywiranda13/has-lockfile) － Detect lockfiles in the working directory
-* [lint-staged](https://github.com/okonet/lint-staged) － Run linters on git staged files
 
 ## Contributors
 
