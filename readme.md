@@ -72,6 +72,30 @@ $ remove-lockfiles --help
     $ remove-lockfiles --shrinkwrap ../foo
 ```
 
+### API
+
+#### removeLockfiles([options])
+
+Returns `Promise<Array>` of deleted lockfiles.
+
+##### options
+
+Type: `Object`
+
+###### cwd
+
+Type: `string`<br />
+Default: `process.cwd()`
+
+Current working directory.
+
+###### shrinkwrap
+
+Type: `boolean`<br />
+Default: `false`
+
+Set to `true` to remove `npm-shrinkwrap.json`.
+
 ## Related
 
 * [del-nm-cli](https://github.com/luftywiranda13/del-nm-cli) － Delete `node_modules` and lockfiles
