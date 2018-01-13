@@ -16,7 +16,9 @@ test_script:
   - node --version
   - npm --version
   - npm run lint
-  - npm run test
+  - npm test
+cache:
+  - '%APPDATA%\npm-cache'
 branches:
   only:
     - master

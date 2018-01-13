@@ -14,7 +14,7 @@ const cli = meow(
     $ remove-lockfiles [path|options]
 
   Options
-    --shrinkwrap    Include \`npm-shrinkwrap.json\` in removal
+    --shrinkwrap  Remove \`npm-shrinkwrap.json\` if found
 
   Examples
     $ remove-lockfiles

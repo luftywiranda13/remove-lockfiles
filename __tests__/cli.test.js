@@ -1,40 +1,32 @@
 'use strict';
 
-const { existsSync, copySync } = require('fs-extra');
-const { stdout } = require('execa');
-const tempy = require('tempy');
+const execa = require('execa');
+const fixtures = require('fixturez');
 
-const fixtures = `${__dirname}/fixtures`;
-const tempDir = tempy.directory();
+const f = fixtures(__dirname);
 
-describe('CLI', async () => {
-  test('default', async () => {
-    expect.assertions(3);
+describe('CLI', () => {
+  it('logs removed lockfiles', async () => {
+    expect.assertions(1);
+    const tempDir = f.copy('lockfiles');
+    const stdout = await execa.stdout('./cli.js', [tempDir]);
 
-    const lockfiles = ['package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json'];
-
-    // Copy lockfiles to tempDir
-    lockfiles.forEach(x => {
-      copySync(`${fixtures}/_${x}`, `${tempDir}/${x}`);
-    });
-
-    await stdout('./cli.js', [tempDir]);
-
-    expect(existsSync(`${tempDir}/package-lock.json`)).toBe(false);
-    expect(existsSync(`${tempDir}/npm-shrinkwrap.json`)).toBe(true);
-    expect(existsSync(`${tempDir}/yarn.lock`)).toBe(false);
+    expect(stdout).toMatchSnapshot();
   });
 
-  test('`--shrinkwrap` flag', async () => {
+  it('logs info when no lockfiles found', async () => {
     expect.assertions(1);
+    const tempDir = f.temp();
+    const stdout = await execa.stdout('./cli.js', [tempDir]);
 
-    copySync(
-      `${fixtures}/_npm-shrinkwrap.json`,
-      `${tempDir}/npm-shrinkwrap.json`
-    );
+    expect(stdout).toMatchSnapshot();
+  });
 
-    await stdout('./cli.js', [tempDir, '--shrinkwrap']);
+  it('passes `--shrinkwrap` flag to API', async () => {
+    expect.assertions(1);
+    const tempDir = f.copy('lockfiles');
+    const stdout = await execa.stdout('./cli.js', [tempDir, '--shrinkwrap']);
 
-    expect(existsSync(`${tempDir}/npm-shrinkwrap.json`)).toBe(false);
+    expect(stdout).toMatch(/npm-shrinkwrap.json/);
   });
 });
