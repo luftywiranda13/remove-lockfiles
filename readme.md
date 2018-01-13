@@ -1,6 +1,6 @@
 # remove-lockfiles
 
-[![Package Version](https://img.shields.io/npm/v/remove-lockfiles.svg)](https://www.npmjs.com/package/remove-lockfiles)
+[![Package Version](https://img.shields.io/npm/v/remove-lockfiles.svg?style=flat-square)](https://www.npmjs.com/package/remove-lockfiles)
 [![Build Status: Linux](https://img.shields.io/travis/luftywiranda13/remove-lockfiles/master.svg)](https://travis-ci.org/luftywiranda13/remove-lockfiles)
 [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/rx84a6lgs5eb3h0m/branch/master?svg=true)](https://ci.appveyor.com/project/luftywiranda13/remove-lockfiles/branch/master)
 [![Coverage Status](https://img.shields.io/codecov/c/github/luftywiranda13/remove-lockfiles/master.svg)](https://codecov.io/gh/luftywiranda13/remove-lockfiles)
