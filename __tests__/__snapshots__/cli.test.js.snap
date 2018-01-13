@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CLI logs info when no lockfiles found 1`] = `"ℹ No lockfile found"`;
-
-exports[`CLI logs removed lockfiles 1`] = `
-"✔ Removed:
-package-lock.json
-yarn.lock"
-`;

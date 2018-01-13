@@ -11,15 +11,15 @@ describe('CLI', () => {
     const tempDir = f.copy('lockfiles');
     const stdout = await execa.stdout('./cli.js', [tempDir]);
 
-    expect(stdout).toMatchSnapshot();
+    expect(stdout).toMatch(/Removed/);
   });
 
-  it('logs info when no lockfiles found', async () => {
+  it('logs info when no lockfile found', async () => {
     expect.assertions(1);
     const tempDir = f.temp();
     const stdout = await execa.stdout('./cli.js', [tempDir]);
 
-    expect(stdout).toMatchSnapshot();
+    expect(stdout).toMatch(/No lockfile found/);
   });
 
   it('passes `--shrinkwrap` flag to API', async () => {
@@ -27,6 +27,6 @@ describe('CLI', () => {
     const tempDir = f.copy('lockfiles');
     const stdout = await execa.stdout('./cli.js', [tempDir, '--shrinkwrap']);
 
-    expect(stdout).toMatch(/npm-shrinkwrap.json/);
+    expect(stdout).toMatch(/npm-shrinkwrap.json$/);
   });
 });

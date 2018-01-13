@@ -13,7 +13,10 @@ describe('API', () => {
     const cwd = process.cwd();
     process.chdir(tempDir);
 
-    const expected = expect.arrayContaining(['yarn.lock', 'package-lock.json']);
+    const expected = expect.arrayContaining([
+      expect.stringMatching('yarn.lock'),
+      expect.stringMatching('package-lock.json'),
+    ]);
 
     const res = await removeLockfiles();
 
@@ -35,9 +38,9 @@ describe('API', () => {
     expect.assertions(1);
     const tempDir = f.copy('lockfiles');
     const expected = expect.arrayContaining([
-      'yarn.lock',
-      'package-lock.json',
-      'npm-shrinkwrap.json',
+      expect.stringMatching(/yarn.lock$/),
+      expect.stringMatching(/package-lock.json$/),
+      expect.stringMatching('npm-shrinkwrap.json'),
     ]);
 
     const res = await removeLockfiles({
