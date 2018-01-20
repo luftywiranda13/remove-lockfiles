@@ -9,6 +9,7 @@ const f = fixtures(__dirname);
 describe('API', () => {
   it('defaults to run in cwd', async () => {
     expect.assertions(1);
+
     const tempDir = f.copy('lockfiles');
     const cwd = process.cwd();
     process.chdir(tempDir);
@@ -26,6 +27,7 @@ describe('API', () => {
 
   it('defaults to not remove `npm-shrinkwrap.json`', async () => {
     expect.assertions(1);
+
     const tempDir = f.copy('lockfiles');
     const expected = expect.arrayContaining([
       expect.stringMatching(/npm-shrinkwrap.json$/),
@@ -38,6 +40,7 @@ describe('API', () => {
 
   it('can be set to remove `npm-shrinkwrap.json`', async () => {
     expect.assertions(1);
+
     const tempDir = f.copy('lockfiles');
     const expected = expect.arrayContaining([
       expect.stringMatching(/yarn.lock$/),
