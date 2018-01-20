@@ -1,55 +1,37 @@
 'use strict';
 
+const { join } = require('path');
 const fixtures = require('fixturez');
 
 const removeLockfiles = require('../');
 
+const cwd = process.cwd();
 const f = fixtures(__dirname);
 
-describe('API', () => {
-  it('defaults to run in cwd', async () => {
-    expect.assertions(1);
-    const tempDir = f.copy('lockfiles');
-    const cwd = process.cwd();
-    process.chdir(tempDir);
+afterEach(() => {
+  process.chdir(cwd);
+});
 
-    const expected = expect.arrayContaining([
-      expect.stringMatching(/yarn.lock$/),
-      expect.stringMatching(/package-lock.json$/),
-    ]);
+it('defaults to not remove `npm-shrinkwrap.json`', async () => {
+  expect.assertions(1);
 
-    const res = await removeLockfiles();
+  const tempDir = f.copy('lockfiles');
+  process.chdir(tempDir);
 
-    expect(res).toEqual(expected);
-    process.chdir(cwd);
-  });
+  await expect(removeLockfiles()).resolves.not.toEqual([
+    join(tempDir, 'npm-shrinkwrap.json'),
+  ]);
+});
 
-  it('defaults to not remove `npm-shrinkwrap.json`', async () => {
-    expect.assertions(1);
-    const tempDir = f.copy('lockfiles');
-    const expected = expect.arrayContaining([
-      expect.stringMatching(/npm-shrinkwrap.json$/),
-    ]);
+it('can be set to remove `npm-shrinkwrap.json`', async () => {
+  expect.assertions(1);
 
-    const res = await removeLockfiles({ cwd: tempDir });
+  const tempDir = f.copy('lockfiles');
+  process.chdir(tempDir);
 
-    expect(res).not.toEqual(expected);
-  });
-
-  it('can be set to remove `npm-shrinkwrap.json`', async () => {
-    expect.assertions(1);
-    const tempDir = f.copy('lockfiles');
-    const expected = expect.arrayContaining([
-      expect.stringMatching(/yarn.lock$/),
-      expect.stringMatching(/package-lock.json$/),
-      expect.stringMatching(/npm-shrinkwrap.json$/),
-    ]);
-
-    const res = await removeLockfiles({
-      cwd: tempDir,
-      shrinkwrap: true,
-    });
-
-    expect(res).toEqual(expected);
-  });
+  await expect(removeLockfiles({ shrinkwrap: true })).resolves.toEqual([
+    join(tempDir, 'package-lock.json'),
+    join(tempDir, 'yarn.lock'),
+    join(tempDir, 'npm-shrinkwrap.json'),
+  ]);
 });
