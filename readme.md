@@ -1,5 +1,7 @@
 # remove-lockfiles
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/luftywiranda13/remove-lockfiles.svg)](https://greenkeeper.io/)
+
 > Prevent committing lockfiles
 
 [![Package Version](https://img.shields.io/npm/v/remove-lockfiles.svg?style=flat-square)](https://www.npmjs.com/package/remove-lockfiles)
