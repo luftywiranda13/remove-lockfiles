@@ -3,7 +3,7 @@
 const { join } = require('path');
 const fixtures = require('fixturez');
 
-const removeLockfiles = require('../');
+const removeLockfiles = require('..');
 
 const cwd = process.cwd();
 const f = fixtures(__dirname);

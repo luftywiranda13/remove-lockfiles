@@ -6,7 +6,7 @@ const { info, success } = require('log-symbols');
 const meow = require('meow');
 const updateNotifier = require('update-notifier');
 
-const removeLockfiles = require('./');
+const removeLockfiles = require('.');
 
 const cli = meow(
   `
@@ -37,7 +37,7 @@ removeLockfiles({
   cwd: cli.input[0],
   shrinkwrap: cli.flags.shrinkwrap,
 }).then(res => {
-  const log = console.log;
+  const { log } = console;
 
   if (res.length === 0) {
     log(info, blue('No lockfile found'));
