@@ -13,12 +13,11 @@
     "node": ">=6"
   },
   "scripts": {
-    "precommit": "node cli.js && xo --fix && lint-staged",
+    "precommit": "node cli.js && lint-staged",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "lint": "xo",
     "test:watch": "jest --watch",
-    "test": "jest --coverage"
+    "test": "xo && jest --coverage"
   },
   "bin": "cli.js",
   "files": [
@@ -36,14 +35,12 @@
   "devDependencies": {
     "all-contributors-cli": "^4.10.0",
     "async-to-gen": "^1.3.3",
-    "eslint-config-prettier": "^2.9.0",
     "execa": "^0.10.0",
     "fixturez": "^1.1.0",
     "husky": "^0.14.3",
     "jest": "^22.0.4",
     "lint-staged": "^7.0.0",
-    "prettier": "^1.10.1",
-    "xo": "^0.18.2"
+    "xo": "^0.20.3"
   },
   "jest": {
     "testEnvironment": "node",
@@ -52,20 +49,25 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,md}": [
+    "*.js": [
+      "xo --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
       "prettier --write",
       "git add"
     ]
   },
   "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5"
+    "bracketSpacing": true,
+    "singleQuote": true
   },
   "xo": {
-    "extends": "prettier",
     "envs": [
       "jest"
-    ]
+    ],
+    "prettier": true,
+    "space": true
   },
   "keywords": [
     "git",
