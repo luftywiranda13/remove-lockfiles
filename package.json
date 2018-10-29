@@ -39,7 +39,7 @@
     "fixturez": "^1.1.0",
     "husky": "^0.14.3",
     "jest": "^22.0.4",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^8.0.0",
     "xo": "^0.20.3"
   },
   "jest": {
