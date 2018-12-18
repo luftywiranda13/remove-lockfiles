@@ -2,9 +2,10 @@ language: node_js
 notifications:
   email: false
 node_js:
+  - '10'
   - '8'
   - '6'
-after_success: if [[ `npm -v` > 4* ]]; then npx codecov; fi
+after_success: if [[ `node -v` == v10* ]]; then npx codecov; fi
 branches:
   only:
     - master

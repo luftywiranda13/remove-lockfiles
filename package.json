@@ -1,6 +1,6 @@
 {
   "name": "remove-lockfiles",
-  "version": "0.0.0-development",
+  "version": "2.1.3",
   "description": "Prevent committing lockfiles",
   "license": "MIT",
   "repository": "https://github.com/luftywiranda13/remove-lockfiles",
@@ -12,8 +12,12 @@
   "engines": {
     "node": ">=6"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "node cli.js && lint-staged"
+    }
+  },
   "scripts": {
-    "precommit": "node cli.js && lint-staged",
     "test:watch": "jest --watch",
     "test": "xo && jest --coverage"
   },
@@ -34,10 +38,10 @@
     "async-to-gen": "^1.3.3",
     "execa": "^0.10.0",
     "fixturez": "^1.1.0",
-    "husky": "^0.14.3",
-    "jest": "^22.0.4",
-    "lint-staged": "^7.0.0",
-    "xo": "^0.20.3"
+    "husky": "^1.2.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "xo": "^0.23.0"
   },
   "jest": {
     "testEnvironment": "node",
@@ -57,7 +61,8 @@
   },
   "prettier": {
     "bracketSpacing": true,
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "xo": {
     "envs": [
