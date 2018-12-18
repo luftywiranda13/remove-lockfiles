@@ -10,6 +10,7 @@ describe('CLI', () => {
     expect.assertions(1);
 
     const tempDir = f.copy('lockfiles');
+    await execa('git', ['init'], { cwd: tempDir });
     const stdout = await execa.stdout('./cli.js', [tempDir]);
 
     expect(stdout).toMatch(/Removed/);
@@ -19,6 +20,7 @@ describe('CLI', () => {
     expect.assertions(1);
 
     const tempDir = f.temp();
+    await execa('git', ['init'], { cwd: tempDir });
     const stdout = await execa.stdout('./cli.js', [tempDir]);
 
     expect(stdout).toMatch(/No lockfile found/);
@@ -28,6 +30,7 @@ describe('CLI', () => {
     expect.assertions(1);
 
     const tempDir = f.copy('lockfiles');
+    await execa('git', ['init'], { cwd: tempDir });
     const stdout = await execa.stdout('./cli.js', [tempDir, '--shrinkwrap']);
 
     expect(stdout).toMatch(/npm-shrinkwrap.json$/);
