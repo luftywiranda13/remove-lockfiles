@@ -14,8 +14,6 @@
   },
   "scripts": {
     "precommit": "node cli.js && lint-staged",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate",
     "test:watch": "jest --watch",
     "test": "xo && jest --coverage"
   },
@@ -33,7 +31,6 @@
     "update-notifier": "^2.3.0"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.10.0",
     "async-to-gen": "^1.3.3",
     "execa": "^0.10.0",
     "fixturez": "^1.1.0",
