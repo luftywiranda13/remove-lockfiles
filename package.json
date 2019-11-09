@@ -27,7 +27,7 @@
     "index.js"
   ],
   "dependencies": {
-    "chalk": "^2.3.0",
+    "chalk": "^3.0.0",
     "force-del": "^2.0.0",
     "has-lockfile": "^4.0.0",
     "log-symbols": "^2.1.0",
